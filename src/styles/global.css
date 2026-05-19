@@ -1,1 +1,16 @@
 @import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --custom-purple-1: #391d43;
+  --custom-purple-2: #4a2e54;
+  --custom-purple-3: #5b3f65;
+  --custom-purple-4: #6c5076;
+  --custom-purple-5: #7d6187;
+
+  --hover-light: rgba(255, 255, 255, 0.1);
+  --hover-dark: rgba(0, 0, 0, 0.1);
+
+  --bg-header: rgba(255, 255, 255, 0.8);
+}

@@ -1,0 +1,98 @@
+---
+import { Sun, Moon } from '@lucide/astro';
+import Logo from '@assets/logo.svg';
+---
+
+<script>
+  const setupThemeToggle = () => {
+    const btnTheme = document.querySelector("#theme-toggle");
+    if (!btnTheme) return;
+
+    btnTheme.addEventListener("click", () => {
+      const isDark = document.documentElement.classList.toggle("dark");
+      localStorage.theme = isDark ? "dark" : "light";
+
+      // Ejecutar animación de rotación
+      btnTheme.classList.add("theme-toggle");
+      setTimeout(() => {
+        btnTheme.classList.remove("theme-toggle");
+      }, 500);
+    });
+  };
+
+  setupThemeToggle();
+</script>
+
+<style>
+
+  html {
+    container-type: scroll-state;
+  }
+
+  @container scroll-state(scrollable: top) {
+    header{
+      margin-left: 300px;
+      margin-right: 300px;
+    }
+  }
+
+  .nav-link {
+    display: flex;
+    position: relative;
+    align-items: center;
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 12px;
+    width: 0;
+    height: 2px;
+    background: var(--custom-purple-4);
+    transition: width 0.5s;
+  }
+
+  .nav-link:hover::after{
+    width: 100%;
+  }
+
+  .theme-toggle {
+    animation: rotate 0.8s ease-in-out;
+  }
+
+
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+</style>
+
+<header class="
+        sticky 
+        top-0 left-0  
+        mx-40 py-10
+        transition-all duration-300
+        text-black dark:text-white">
+  <nav class="flex justify-between align-items-center border border-zinc-300 dark:border-zinc-600 backdrop-blur-sm dark:bg-zinc-950/30 bg-zinc-50/30 rounded-2xl">
+    <a class="flex items-center mx-4" href="/">
+      <Logo class="w-10 h-10 text-black dark:text-white" />
+    </a>
+    <ul class="flex gap-8 align-items-center">
+      <li class="nav-link"><a href="#">Inicio</a></li>
+      <li class="nav-link"><a href="#">Sobre mí</a></li>
+      <li class="nav-link"><a href="#">Proyectos</a></li>
+      <li class="nav-link"><a href="#">Contacto</a></li>
+    </ul>
+    <div class="p-3">
+      <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-900">
+        <Sun class="w-5 h-5 text-gray-500 dark:hidden" />
+        <Moon class="w-5 h-5 text-gray-500 hidden dark:block" />
+      </button>
+    </div>
+  </nav>
+</header>
