@@ -14,3 +14,7 @@
 
   --bg-header: rgba(255, 255, 255, 0.8);
 }
+
+.container{
+  @apply mx-10;
+}
