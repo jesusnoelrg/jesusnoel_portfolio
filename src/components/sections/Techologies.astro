@@ -1,0 +1,221 @@
+---
+import TextShimmer from "@components/effects/TextShimmer.astro";
+import GlareHover from "../../component/GlareHover";
+
+const frontend = {
+  category: "Frontend Web",
+  items: [
+    { url_img: "../../src/assets/icons/reactjs.svg", text: "React" },
+    { url_img: "../../src/assets/icons/nextjs.svg", text: "Next.js" },
+    { url_img: "../../src/assets/icons/astro.svg", text: "Astro", invert: true },
+    { url_img: "../../src/assets/icons/javascript.svg", text: "JavaScript" },
+    { url_img: "../../src/assets/icons/tailwindcss.svg", text: "TailwindCSS" },
+    { url_img: "../../src/assets/icons/Bootstrap.svg", text: "Bootstrap" },
+    { url_img: "../../src/assets/icons/sass.svg", text: "Sass" },
+
+  ]
+};
+
+const backend = {
+    category: "Backend",
+    items: [
+      { url_img: "../../src/assets/icons/nodejs.svg", text: "Node.js" },
+      { url_img: "../../src/assets/icons/expressjs.svg", text: "Express", invert: true },
+      { url_img: "../../src/assets/icons/fastapi.svg", text: "FastAPI" },
+      { url_img: "../../src/assets/icons/typescript.svg", text: "TypeScript" },
+      { url_img: "../../src/assets/icons/python.svg", text: "Python" },
+      { url_img: "../../src/assets/icons/java.svg", text: "Java" },
+    ]
+  };
+
+const databases = {
+    category: "Bases de datos y ORMs",
+    items: [
+      { url_img: "../../src/assets/icons/mysql.svg", text: "MySQL", invert: false },
+      { url_img: "../../src/assets/icons/postgresql.svg", text: "PostgreSQL" },
+      { url_img: "../../src/assets/icons/sqlite.svg", text: "SQLite" },
+      { url_img: "../../src/assets/icons/prisma.svg", text: "Prisma" },
+    ]
+  };
+
+const tools = {
+    category: "Herramientas",
+    items: [
+      { url_img: "../../src/assets/icons/docker.svg", text: "Docker" },
+      { url_img: "../../src/assets/icons/vercel.svg", text: "Vercel", invert: true },
+      { url_img: "../../src/assets/icons/render.svg", text: "Render", invert: true },
+      { url_img: "../../src/assets/icons/github.svg", text: "GitHub", invert: true },
+    ]
+  };
+
+const mobile = {
+    category: "Desarrollo móvil",
+    items: [
+      { url_img: "../../src/assets/icons/flutter.svg", text: "Flutter", invert: false },
+      { url_img: "../../src/assets/icons/kotlin.svg", text: "Kotlin" },
+      { url_img: "../../src/assets/icons/dart.svg", text: "Dart" },
+    ]
+  };
+
+---
+
+<section class="flex flex-col items-center justify-center pt-16 pb-0">
+  <TextShimmer text="TECNOLOGÍAS" color1="#391d43" color2="#7d6187" color3="#391d43"
+    class="text-lg md:text-2xl font-bold" 
+  />
+  <h1 class="text-3xl md:text-5xl font-bold text-black dark:text-white">Tecnologías que manejo</h1>
+  <div class="grid grid-cols-1 lg:grid-cols-4 lg:grid-rows-4 gap-6 w-full lg:h-200 mt-20 rounded-lg px-10 md:px-15 lg:px-25 xl:px-40">
+    <GlareHover
+      client:only="react"
+
+      glareColor="#ffffff"
+      glareOpacity={0.1}
+      glareAngle={-30}
+      glareSize={300}
+      transitionDuration={1500}
+      playOnce={false}
+      width="200"
+      height="100"
+      background=""
+      borderColor=""
+
+      className="lg:col-span-1 lg:row-span-3 lg:col-start-1 lg:row-start-1 flex flex-col items-center justify-center card-style
+        "
+    >
+      <div class="flex flex-col text-center">
+        {
+          <h1 class="mb-5 font-bold text-xl text-black dark:text-white">{frontend.category}</h1>
+        }
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-7 lg:grid-cols-2 gap-8">
+          {
+            frontend.items.map(item => (
+              <div class="flex flex-col items-center gap-5">
+                <img src={item.url_img} alt={item.text} class={`w-8 h-8 md:w-12 md:h-12 lg:w-8 lg:h-8 ${item.invert ? 'invert dark:invert-0' : ''}`} />
+                <span class="text-sm text-zinc-700 dark:text-zinc-300">{item.text}</span>
+              </div> 
+            ))
+          }
+        </div>
+      </div>
+    </GlareHover>
+    <GlareHover
+      client:only="react"
+
+      glareColor="#ffffff"
+      glareOpacity={0.1}
+      glareAngle={-30}
+      glareSize={300}
+      transitionDuration={1500}
+      playOnce={false}
+      width="100"
+      height="100"
+      background=""
+      borderColor=""
+      className="lg:col-span-2 lg:row-span-1 lg:col-start-2 lg:row-start-1 flex flex-col items-center justify-center card-style">
+      <div class="flex flex-col items-center justify-center">
+        {
+          <h1 class="mb-5 font-bold text-xl text-black dark:text-white">{databases.category}</h1>
+        }
+        <div class="flex flex-wrap items-center justify-start gap-8">
+          {
+            databases.items.map(item => (
+              <div class="flex flex-col items-center gap-5">
+                <img src={item.url_img} alt={item.text} class={`w-8 h-8 ${item.invert ? 'invert dark:invert-0' : ''}`} />
+                <span class="text-sm text-zinc-700 dark:text-zinc-300">{item.text}</span>
+              </div> 
+            ))
+          }
+      </div>
+      </div>
+    </GlareHover>
+    <GlareHover
+      client:only="react"
+
+      glareColor="#ffffff"
+      glareOpacity={0.1}
+      glareAngle={-30}
+      glareSize={300}
+      transitionDuration={1500}
+      playOnce={false}
+      width="200"
+      height="100"
+      background=""
+      borderColor=""
+      className="lg:col-span-1 lg:row-span-3 lg:col-start-4 lg:row-start-1 card-style"
+    >
+      <div class="flex flex-col text-center">
+        {
+          <h1 class=" mb-5 font-bold text-xl text-black dark:text-white">{backend.category}</h1>
+        }
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-2 gap-8">
+          {
+            backend.items.map(item => (
+              <div class="flex flex-col items-center gap-5">
+                <img src={item.url_img} alt={item.text} class={`w-8 h-8 ${item.invert ? 'invert dark:invert-0' : ''}`} />
+                <span class="text-sm text-zinc-700 dark:text-zinc-300">{item.text}</span>
+              </div> 
+            ))
+          }
+        </div>
+      </div>
+    </GlareHover>
+    <GlareHover
+      client:only="react"
+
+      glareColor="#ffffff"
+      glareOpacity={0.1}
+      glareAngle={-30}
+      glareSize={300}
+      transitionDuration={1500}
+      playOnce={false}
+      width="200"
+      height="100"
+      background=""
+      borderColor=""
+      className="lg:col-span-2 lg:row-span-1 lg:col-start-2 lg:row-start-2 flex flex-col items-center justify-center card-style"
+    >
+      {
+        <h1 class="mb-5 font-bold text-xl text-black dark:text-white">{mobile.category}</h1>
+      }
+      <div class="flex flex-wrap items-center justify-start gap-8">
+        {
+          mobile.items.map(item => (
+            <div class="flex flex-col items-center gap-5">
+              <img src={item.url_img} alt={item.text} class={`w-8 h-8 ${item.invert ? 'invert dark:invert-0' : ''}`} />
+              <span class="text-sm text-zinc-700 dark:text-zinc-300">{item.text}</span>
+            </div> 
+          ))
+        }
+      </div>
+    </GlareHover>
+    <GlareHover
+      client:only="react"
+
+      glareColor="#ffffff"
+      glareOpacity={0.1}
+      glareAngle={-30}
+      glareSize={300}
+      transitionDuration={1500}
+      playOnce={false}
+      width="200"
+      height="100"
+      background=""
+      borderColor=""
+      className="lg:col-span-2 lg:row-span-1 lg:col-start-2 lg:row-start-3 flex flex-col items-center justify-center card-style"
+    >
+      {
+        <h1 class="mb-5 font-bold text-xl text-black dark:text-white">{tools.category}</h1>
+      }
+      <div class="flex flex-wrap items-center justify-center gap-8">
+        {
+          tools.items.map(item => (
+            <div class="flex flex-col items-center gap-5">
+              <img src={item.url_img} alt={item.text} class={`w-8 h-8 ${item.invert ? 'invert dark:invert-0' : ''}`} />
+              <span class="text-sm text-zinc-700 dark:text-zinc-300">{item.text}</span>
+            </div> 
+          ))
+        }
+      </div>
+    </GlareHover>
+  </div>
+</section>

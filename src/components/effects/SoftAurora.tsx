@@ -178,7 +178,9 @@ export default function SoftAurora({
 }: SoftAuroraProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
+
   useEffect(() => {
+
     if (!containerRef.current) return;
     const container = containerRef.current;
     const renderer = new Renderer({ alpha: true, premultipliedAlpha: false });

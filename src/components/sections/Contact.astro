@@ -1,0 +1,57 @@
+---
+import TextShimmer from "@components/effects/TextShimmer.astro";
+import Button from "@components/ui/Button";
+import Input from "@components/ui/Input";
+import TextArea from "@components/ui/TextArea";
+import ContactForm from "@components/ui/ContactForm.tsx"
+
+import GitHub from "@assets/icons/github.svg";
+import LinkedIn from "@assets/icons/linkedin.svg";
+import { Mail, Send } from "@lucide/astro";
+
+const networks = [
+  {
+    plataform: "GitHub", icon: GitHub, ref: "https://github.com/jesusnoelrg"
+  },
+  {
+    plataform: "LinkedIn", icon: LinkedIn, ref: "https://www.linkedin.com/jobs/search?keywords=Manufactura&location=Sonora"
+  },
+  {
+    plataform: "Correo", icon: Mail, ref: "mailto:jesusnoelrg.dev@gmail.com"
+  },
+]
+---
+
+<section id="contact" class="relative bg-zinc-100 dark:bg-zinc-950 text-black dark:text-white">
+  <div class="flex justify-evenly items-center mx-10 md:mx-15 lg:mx-30 xl:mx-40 pt-10">
+    <div class="w-1/2 p-10">
+      <TextShimmer text="CONTACTO" color1="#391d43" color2="#7d6187" color3="#391d43"
+        class="text-xl md:text-2xl font-bold" 
+      />
+      <h1 class="mb-5 text-3xl md:text-5xl font-bold">Listo para hablar</h1>
+      <p class="leading-relaxed text-zinc-600 dark:text-zinc-300">
+        Mi bandeja de entrada siempre está abierta puede contactarme por este medio o en las redes sociales 
+        que dejo aquí abajo. No dude en contactarme y le responderé.
+      </p>
+      <div class="flex justify-start items-center mt-10 gap-5 text-white">
+        {
+          networks.map(({plataform, icon: Icon, ref}) => (
+            <a href={ref} target="_blank" 
+              class="
+              flex flex-col items-center justify-center
+              space-y-2 px-4 py-2
+              dark:text-white
+              hover:scale-115 dark:hover:text-zinc-400/90
+              cursor-pointer
+              transition duration-300
+              ">
+              <Icon class="w-8 h-8" />
+              <span class="text-sm" >{plataform}</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+    <ContactForm client:load />
+  </div>
+</section>

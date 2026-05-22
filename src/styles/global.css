@@ -13,8 +13,16 @@
   --hover-dark: rgba(0, 0, 0, 0.1);
 
   --bg-header: rgba(255, 255, 255, 0.8);
+  
+  --bg-card: #f7f6f6;
+  --bg-card-dark: #050505;
 }
 
 .container{
   @apply mx-10;
 }
+
+.card-style{
+  @apply bg-(--bg-card) dark:bg-(--bg-card-dark) p-10 rounded-2xl border border-zinc-300 dark:border-zinc-900
+}
+

@@ -5,41 +5,44 @@ import TextShimmer from '@components/effects/TextShimmer.astro';
 import Github from '@assets/icons/github.svg';
 import LinkedIn from '@assets/icons/linkedin.svg';
 import { Mail } from '@lucide/Astro';
+
 ---
-
-
 <section class="
         relative 
         h-120
         flex flex-col justify-center items-start
         text-black dark:text-white">
+  
   <SoftAurora
-    client:only="react"
 
-    speed={0.6}
-    scale={1.5}
-    brightness={1}
-    color1="#37008c"
-    color2="#340481"
-    noiseFrequency={2.5}
-    noiseAmplitude={1}
-    bandHeight={0.5}
-    bandSpread={1}
-    octaveDecay={0.1}
-    layerOffset={0}
-    colorSpeed={1}
-    enableMouseInteraction
-    mouseInfluence={0}
-  />
+      client:only="react"
+
+      speed={0.6}
+      scale={1}
+      brightness={1}
+      color1="#391d43"
+      color2="#340481"
+      noiseFrequency={2.5}
+      noiseAmplitude={4}
+      bandHeight={0.5}
+      bandSpread={1}
+      octaveDecay={0.1}
+      layerOffset={0}
+      colorSpeed={1}
+      enableMouseInteraction
+      mouseInfluence={0}
+    />
 
   <div class="flex flex-col gap-4 items-center justify-center mx-20 xl:mx-40 z-10">
+    
+
     <p class="text-3xl text-black dark:text-white">¡Hola, soy Jesús Noel!</p>
     <h1 class="text-5xl text-center md:text-6xl font-medium text-pretty leading-none text-black dark:text-white">
       Desarrollador de 
-      <TextShimmer text="Software" color1="#391d43" color2="#7d6187" color3="#391d43" class="" />
+      <TextShimmer text="Software" color1="#391d43" color2="#7d6187" color3="#391d43" class="font-bold" />
     </h1>
-    <p class="text-md md:text-2xl text-center leading-relaxed text-balance text-gray-600 dark:text-gray-300">
-      Ingeniero de Software <span class="text-[var(--custom-purple-4)]">enfocado</span> en arquitectura de sistemas, optimización 
+    <p class="text-md md:text-2xl text-shadow-lg text-center leading-relaxed text-balance text-gray-800 dark:text-gray-300">
+      Ingeniero de Software <span class="text-purple-400">enfocado</span> en arquitectura de sistemas, optimización 
       de bases de datos y aplicaciones de alto rendimiento.
     </p>
     <nav aria-label="redes-sociales" class="mt-10">
@@ -48,10 +51,10 @@ import { Mail } from '@lucide/Astro';
           <a href="https://github.com" target="_blank" rel="noopener noreferrer"
             class="
             flex items-center justify-center p-3
-            border border-zinc-200 dark:border-zinc-800 rounded-xl
-            bg-white dark:bg-zinc-950
+            border border-zinc-300 dark:border-zinc-800 rounded-xl
+            bg-zinc-100 dark:bg-zinc-950
             transition-all duration-200
-            hover:scale-105 hover:bg-zinc-50 dark:hover:bg-zinc-900
+            hover:scale-105 hover:bg-zinc-200 dark:hover:bg-zinc-900
             text-black dark:text-white"
           >
             <Github class="w-8 h-8 text-black dark:text-white" />
@@ -61,10 +64,10 @@ import { Mail } from '@lucide/Astro';
           <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
             class="
               flex items-center justify-center p-3
-              border border-zinc-200 dark:border-zinc-800 rounded-xl
-              bg-white dark:bg-zinc-950
+              border border-zinc-300 dark:border-zinc-800 rounded-xl
+              bg-zinc-100 dark:bg-zinc-950
               transition-all duration-200
-              hover:scale-105 hover:bg-zinc-50 dark:hover:bg-zinc-900
+              hover:scale-105 hover:bg-zinc-200 dark:hover:bg-zinc-900
               text-black dark:text-white"
           >
             <LinkedIn class="w-8 h-8 text-black dark:text-white" />
@@ -74,10 +77,10 @@ import { Mail } from '@lucide/Astro';
           <a href="mailto:jesusnoelrg.dev@gmail.com"
             class="
               flex items-center justify-center p-3
-              border border-zinc-200 dark:border-zinc-800 rounded-xl
-              bg-white dark:bg-zinc-950
+              border border-zinc-300 dark:border-zinc-800 rounded-xl
+              bg-zinc-100 dark:bg-zinc-950
               transition-all duration-200
-              hover:scale-105 hover:bg-zinc-50 dark:hover:bg-zinc-900
+              hover:scale-105 hover:bg-zinc-200 dark:hover:bg-zinc-900
               text-black dark:text-white"
           >
             <Mail class="w-8 h-8 text-black dark:text-white" />

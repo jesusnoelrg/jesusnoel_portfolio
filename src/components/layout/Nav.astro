@@ -1,5 +1,5 @@
 ---
-import { Sun, Moon } from '@lucide/astro';
+import { Sun, Moon, House, UserPen, Folder, MailOpen } from '@lucide/astro';
 import Logo from '@assets/logo.svg';
 ---
 
@@ -34,6 +34,27 @@ import Logo from '@assets/logo.svg';
       margin-left: 300px;
       margin-right: 300px;
     }
+
+    @media screen and (max-width: 1024px) {
+      header {
+        margin-left: 150px;
+        margin-right: 150px;
+      }
+    }
+
+    @media screen and (max-width: 800px) {
+      header {
+        margin-left: 100px;
+        margin-right: 100px;
+      }
+    }
+  }
+
+  .nav-link-mobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
   }
 
   .nav-link {
@@ -41,16 +62,15 @@ import Logo from '@assets/logo.svg';
     position: relative;
     align-items: center;
   }
-
   .nav-link::after {
-    content: "";
+    content: '';
     position: absolute;
+    bottom: 10px;
     left: 0;
-    bottom: 12px;
     width: 0;
     height: 2px;
-    background: var(--custom-purple-4);
-    transition: width 0.5s;
+    background-color: purple;
+    transition: width 0.3s ease-in-out;
   }
 
   .nav-link:hover::after{
@@ -72,23 +92,26 @@ import Logo from '@assets/logo.svg';
   }
 </style>
 
-<header class="
-        sticky 
-        top-0 left-0  
-        mx-40 py-10
-        transition-all duration-300
-        text-black dark:text-white">
+<div id="home"></div>
+<header 
+  class="
+    sticky 
+    top-0 left-0  
+    mx-5 md:mx-20 lg:mx-40 py-5 sm:py-10
+    transition-all duration-300
+    z-100
+    text-black dark:text-white">
   <nav class="flex justify-between align-items-center border border-zinc-300 dark:border-zinc-600 backdrop-blur-sm dark:bg-zinc-950/30 bg-zinc-50/30 rounded-2xl">
     <a class="flex items-center mx-4" href="/">
-      <Logo class="w-10 h-10 text-black dark:text-white" />
+      <Logo class="w-5 h-5 sm:w-10 sm:h-10 text-black dark:text-white" />
     </a>
-    <ul class="flex gap-8 align-items-center">
-      <li class="nav-link"><a href="#">Inicio</a></li>
-      <li class="nav-link"><a href="#">Sobre mí</a></li>
-      <li class="nav-link"><a href="#">Proyectos</a></li>
-      <li class="nav-link"><a href="#">Contacto</a></li>
+    <ul class="hidden sm:flex gap-8 align-items-center">
+      <li class="nav-link"><a href="#home">Inicio</a></li>
+      <li class="nav-link"><a href="#about">Sobre mí</a></li>
+      <li class="nav-link"><a href="#projects">Proyectos</a></li>
+      <li class="nav-link"><a href="#contact">Contacto</a></li>
     </ul>
-    <div class="p-3">
+    <div class="p-1 sm:p-3">
       <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-900">
         <Sun class="w-5 h-5 text-gray-500 dark:hidden" />
         <Moon class="w-5 h-5 text-gray-500 hidden dark:block" />
@@ -96,3 +119,27 @@ import Logo from '@assets/logo.svg';
     </div>
   </nav>
 </header>
+<div class="fixed w-full bottom-0 z-50 border border-zinc-300 dark:border-zinc-600 backdrop-blur-sm dark:bg-zinc-950/30 bg-zinc-50/30 rounded-t-2xl">
+  <ul class="flex sm:hidden justify-around align-items-center p-4 pointer-events-auto text-black dark:text-white text-[10px]">
+    <li class="nav-link-mobile hover:text-purple-400/50 transition-colors duration-300">
+      <a class="flex flex-col justify-center items-center" href="#home">
+        <House class="w-5 h-5" /> 
+        Inicio</a>
+    </li>
+    <li class="nav-link-mobile hover:text-purple-400/50 transition-colors duration-300">
+      <a class="flex flex-col justify-center items-center" href="#about">
+        <UserPen class="w-5 h-5" /> 
+        Sobre mí</a>
+    </li>
+    <li class="nav-link-mobile hover:text-purple-400/50 transition-colors duration-300">
+      <a class="flex flex-col justify-center items-center" href="#projects">
+        <Folder class="w-5 h-5" /> 
+        Proyectos</a>
+    </li>
+    <li class="nav-link-mobile hover:text-purple-400/50 transition-colors duration-300">
+      <a class="flex flex-col justify-center items-center" href="#contact">
+        <MailOpen class="w-5 h-5" /> 
+        Contacto</a>
+    </li>
+  </ul>
+</div>
