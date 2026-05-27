@@ -59,7 +59,6 @@ export default function Textarea({
         form={form}
         className={`
           ${className}
-          w-100
           px-3 py-2
           rounded-md outline-none border-2 border-zinc-200 dark:border-zinc-800 
           bg-white dark:bg-zinc-900/30

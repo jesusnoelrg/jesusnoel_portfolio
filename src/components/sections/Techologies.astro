@@ -60,96 +60,129 @@ const mobile = {
 ---
 
 <section class="flex flex-col items-center justify-center pt-16 pb-0">
-  <TextShimmer text="TECNOLOGÍAS" color1="#391d43" color2="#7d6187" color3="#391d43"
-    class="text-lg md:text-2xl font-bold" 
-  />
-  <h1 class="text-3xl md:text-5xl font-bold text-black dark:text-white">Tecnologías que manejo</h1>
-  <div class="grid grid-cols-1 lg:grid-cols-4 lg:grid-rows-4 gap-6 w-full lg:h-200 mt-20 rounded-lg px-10 md:px-15 lg:px-25 xl:px-40">
-    <GlareHover
-      client:only="react"
+  <div class="container">
+    <div class="text-center">
+      <TextShimmer text="TECNOLOGÍAS" color1="#391d43" color2="#7d6187" color3="#391d43"
+      class="text-lg md:text-2xl font-bold" 
+      />
+      <h1 class="text-3xl md:text-5xl font-bold text-black dark:text-white">Tecnologías que manejo</h1>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-4 lg:grid-rows-4 gap-6 w-full lg:h-200 mt-20 rounded-lg px-10 md:px-15 lg:px-25 xl:px-40">
+      <GlareHover
+        client:only="react"
 
-      glareColor="#ffffff"
-      glareOpacity={0.1}
-      glareAngle={-30}
-      glareSize={300}
-      transitionDuration={1500}
-      playOnce={false}
-      width="200"
-      height="100"
-      background=""
-      borderColor=""
+        glareColor="#ffffff"
+        glareOpacity={0.1}
+        glareAngle={-30}
+        glareSize={300}
+        transitionDuration={1500}
+        playOnce={false}
+        width="200"
+        height="100"
+        background=""
+        borderColor=""
 
-      className="lg:col-span-1 lg:row-span-3 lg:col-start-1 lg:row-start-1 flex flex-col items-center justify-center card-style
-        "
-    >
-      <div class="flex flex-col text-center">
-        {
-          <h1 class="mb-5 font-bold text-xl text-black dark:text-white">{frontend.category}</h1>
-        }
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-7 lg:grid-cols-2 gap-8">
+        className="lg:col-span-1 lg:row-span-3 lg:col-start-1 lg:row-start-1 flex flex-col items-center justify-center card-style
+          "
+      >
+        <div class="flex flex-col text-center">
           {
-            frontend.items.map(item => (
-              <div class="flex flex-col items-center gap-5">
-                <img src={item.url_img} alt={item.text} class={`w-8 h-8 md:w-12 md:h-12 lg:w-8 lg:h-8 ${item.invert ? 'invert dark:invert-0' : ''}`} />
-                <span class="text-sm text-zinc-700 dark:text-zinc-300">{item.text}</span>
-              </div> 
-            ))
+            <h1 class="mb-5 font-bold text-xl text-black dark:text-white">{frontend.category}</h1>
           }
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-7 lg:grid-cols-2 gap-8">
+            {
+              frontend.items.map(item => (
+                <div class="flex flex-col items-center gap-5">
+                  <img src={item.url_img} alt={item.text} class={`w-8 h-8 md:w-12 md:h-12 lg:w-8 lg:h-8 ${item.invert ? 'invert dark:invert-0' : ''}`} />
+                  <span class="text-sm text-zinc-700 dark:text-zinc-300">{item.text}</span>
+                </div> 
+              ))
+            }
+          </div>
         </div>
-      </div>
-    </GlareHover>
-    <GlareHover
-      client:only="react"
+      </GlareHover>
+      <GlareHover
+        client:only="react"
 
-      glareColor="#ffffff"
-      glareOpacity={0.1}
-      glareAngle={-30}
-      glareSize={300}
-      transitionDuration={1500}
-      playOnce={false}
-      width="100"
-      height="100"
-      background=""
-      borderColor=""
-      className="lg:col-span-2 lg:row-span-1 lg:col-start-2 lg:row-start-1 flex flex-col items-center justify-center card-style">
-      <div class="flex flex-col items-center justify-center">
+        glareColor="#ffffff"
+        glareOpacity={0.1}
+        glareAngle={-30}
+        glareSize={300}
+        transitionDuration={1500}
+        playOnce={false}
+        width="100"
+        height="100"
+        background=""
+        borderColor=""
+        className="lg:col-span-2 lg:row-span-1 lg:col-start-2 lg:row-start-1 flex flex-col items-center justify-center card-style">
+        <div class="flex flex-col items-center justify-center">
+          {
+            <h1 class="mb-5 font-bold text-xl text-black dark:text-white">{databases.category}</h1>
+          }
+          <div class="flex flex-wrap items-center justify-start gap-8">
+            {
+              databases.items.map(item => (
+                <div class="flex flex-col items-center gap-5">
+                  <img src={item.url_img} alt={item.text} class={`w-8 h-8 ${item.invert ? 'invert dark:invert-0' : ''}`} />
+                  <span class="text-sm text-zinc-700 dark:text-zinc-300">{item.text}</span>
+                </div> 
+              ))
+            }
+        </div>
+        </div>
+      </GlareHover>
+      <GlareHover
+        client:only="react"
+
+        glareColor="#ffffff"
+        glareOpacity={0.1}
+        glareAngle={-30}
+        glareSize={300}
+        transitionDuration={1500}
+        playOnce={false}
+        width="200"
+        height="100"
+        background=""
+        borderColor=""
+        className="lg:col-span-1 lg:row-span-3 lg:col-start-4 lg:row-start-1 card-style"
+      >
+        <div class="flex flex-col text-center">
+          {
+            <h1 class=" mb-5 font-bold text-xl text-black dark:text-white">{backend.category}</h1>
+          }
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-2 gap-8">
+            {
+              backend.items.map(item => (
+                <div class="flex flex-col items-center gap-5">
+                  <img src={item.url_img} alt={item.text} class={`w-8 h-8 ${item.invert ? 'invert dark:invert-0' : ''}`} />
+                  <span class="text-sm text-zinc-700 dark:text-zinc-300">{item.text}</span>
+                </div> 
+              ))
+            }
+          </div>
+        </div>
+      </GlareHover>
+      <GlareHover
+        client:only="react"
+
+        glareColor="#ffffff"
+        glareOpacity={0.1}
+        glareAngle={-30}
+        glareSize={300}
+        transitionDuration={1500}
+        playOnce={false}
+        width="200"
+        height="100"
+        background=""
+        borderColor=""
+        className="lg:col-span-2 lg:row-span-1 lg:col-start-2 lg:row-start-2 flex flex-col items-center justify-center card-style"
+      >
         {
-          <h1 class="mb-5 font-bold text-xl text-black dark:text-white">{databases.category}</h1>
+          <h1 class="mb-5 font-bold text-xl text-black dark:text-white">{mobile.category}</h1>
         }
         <div class="flex flex-wrap items-center justify-start gap-8">
           {
-            databases.items.map(item => (
-              <div class="flex flex-col items-center gap-5">
-                <img src={item.url_img} alt={item.text} class={`w-8 h-8 ${item.invert ? 'invert dark:invert-0' : ''}`} />
-                <span class="text-sm text-zinc-700 dark:text-zinc-300">{item.text}</span>
-              </div> 
-            ))
-          }
-      </div>
-      </div>
-    </GlareHover>
-    <GlareHover
-      client:only="react"
-
-      glareColor="#ffffff"
-      glareOpacity={0.1}
-      glareAngle={-30}
-      glareSize={300}
-      transitionDuration={1500}
-      playOnce={false}
-      width="200"
-      height="100"
-      background=""
-      borderColor=""
-      className="lg:col-span-1 lg:row-span-3 lg:col-start-4 lg:row-start-1 card-style"
-    >
-      <div class="flex flex-col text-center">
-        {
-          <h1 class=" mb-5 font-bold text-xl text-black dark:text-white">{backend.category}</h1>
-        }
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-2 gap-8">
-          {
-            backend.items.map(item => (
+            mobile.items.map(item => (
               <div class="flex flex-col items-center gap-5">
                 <img src={item.url_img} alt={item.text} class={`w-8 h-8 ${item.invert ? 'invert dark:invert-0' : ''}`} />
                 <span class="text-sm text-zinc-700 dark:text-zinc-300">{item.text}</span>
@@ -157,65 +190,36 @@ const mobile = {
             ))
           }
         </div>
-      </div>
-    </GlareHover>
-    <GlareHover
-      client:only="react"
+      </GlareHover>
+      <GlareHover
+        client:only="react"
 
-      glareColor="#ffffff"
-      glareOpacity={0.1}
-      glareAngle={-30}
-      glareSize={300}
-      transitionDuration={1500}
-      playOnce={false}
-      width="200"
-      height="100"
-      background=""
-      borderColor=""
-      className="lg:col-span-2 lg:row-span-1 lg:col-start-2 lg:row-start-2 flex flex-col items-center justify-center card-style"
-    >
-      {
-        <h1 class="mb-5 font-bold text-xl text-black dark:text-white">{mobile.category}</h1>
-      }
-      <div class="flex flex-wrap items-center justify-start gap-8">
+        glareColor="#ffffff"
+        glareOpacity={0.1}
+        glareAngle={-30}
+        glareSize={300}
+        transitionDuration={1500}
+        playOnce={false}
+        width="200"
+        height="100"
+        background=""
+        borderColor=""
+        className="lg:col-span-2 lg:row-span-1 lg:col-start-2 lg:row-start-3 flex flex-col items-center justify-center card-style"
+      >
         {
-          mobile.items.map(item => (
-            <div class="flex flex-col items-center gap-5">
-              <img src={item.url_img} alt={item.text} class={`w-8 h-8 ${item.invert ? 'invert dark:invert-0' : ''}`} />
-              <span class="text-sm text-zinc-700 dark:text-zinc-300">{item.text}</span>
-            </div> 
-          ))
+          <h1 class="mb-5 font-bold text-xl text-black dark:text-white">{tools.category}</h1>
         }
-      </div>
-    </GlareHover>
-    <GlareHover
-      client:only="react"
-
-      glareColor="#ffffff"
-      glareOpacity={0.1}
-      glareAngle={-30}
-      glareSize={300}
-      transitionDuration={1500}
-      playOnce={false}
-      width="200"
-      height="100"
-      background=""
-      borderColor=""
-      className="lg:col-span-2 lg:row-span-1 lg:col-start-2 lg:row-start-3 flex flex-col items-center justify-center card-style"
-    >
-      {
-        <h1 class="mb-5 font-bold text-xl text-black dark:text-white">{tools.category}</h1>
-      }
-      <div class="flex flex-wrap items-center justify-center gap-8">
-        {
-          tools.items.map(item => (
-            <div class="flex flex-col items-center gap-5">
-              <img src={item.url_img} alt={item.text} class={`w-8 h-8 ${item.invert ? 'invert dark:invert-0' : ''}`} />
-              <span class="text-sm text-zinc-700 dark:text-zinc-300">{item.text}</span>
-            </div> 
-          ))
-        }
-      </div>
-    </GlareHover>
+        <div class="flex flex-wrap items-center justify-center gap-8">
+          {
+            tools.items.map(item => (
+              <div class="flex flex-col items-center gap-5 text-white">
+                <img src={item.url_img} alt={item.text} class={`w-8 h-8 ${item.invert ? 'invert dark:invert-0' : ''}`} />
+                <span class="text-sm text-zinc-700 dark:text-zinc-300">{item.text}</span>
+              </div> 
+            ))
+          }
+        </div>
+      </GlareHover>
+    </div>
   </div>
 </section>

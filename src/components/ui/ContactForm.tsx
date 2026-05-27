@@ -3,6 +3,7 @@ import { useState, type FormEvent, type ChangeEvent } from 'react';
 import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
 import TextArea from '../../components/ui/TextArea';
+import Modal from '../../components/ui/Modal';
 
 import { Send } from 'lucide-react';
 
@@ -12,13 +13,31 @@ interface FieldErrors {
   message?: string;
 }
 
+interface FieldForm {
+  name?: string;
+  email?: string;
+  message?: string;
+}
+
 export default function ContactForm() {
+  const [openModal, setOpenModal] = useState(false);
   const [result, setResult] = useState("");
   const [errors, setErrors] = useState<FieldErrors>({});
+  const [form, setForm] = useState<FieldForm>({});
 
   const validateEmail = (email: string): boolean => {
     const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return regex.test(email);
+  }
+
+  const cleanForm = (): FieldForm => {
+    const formCleaned: FieldForm = {}
+
+    formCleaned.name = "";
+    formCleaned.email = "";
+    formCleaned.message = "";
+
+    return formCleaned
   }
 
   const validateForm = (formData: FormData): FieldErrors => {
@@ -34,7 +53,7 @@ export default function ContactForm() {
     }else if(!validateEmail(email)) {
       newErrors.email = "Has ingresado un email inválido."
     }
-    if(!message || (name.length < 3 || name.length > 500)) newErrors.message = "El mensaje debe tener mínimo 3 caracteres y como máximo 500.";
+    if(!message || (message.length < 3 || message.length > 500)) newErrors.message = "El mensaje debe tener mínimo 3 caracteres y como máximo 500.";
 
     return newErrors;
   }
@@ -61,24 +80,29 @@ export default function ContactForm() {
     });
 
     const data = await response.json();
+    if(data.success) setOpenModal(true);
+    setForm(cleanForm);
     setResult(data.success ? "Success!" : "Error");
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement> ) => {
-    const name = event.target.name;
+    const {name, value} = event.target;
 
     if(name in errors && errors[name as keyof FieldErrors]){
       setErrors(prev => ({ ...prev, [name]: "" }));
     }
+
+    setForm(prev => ({...prev, [name]: value }))
   }
 
   return (
     <form onSubmit={onSubmit} className="w-1/2 p-10 flex flex-col items-center justify-center">
       
       <Input 
-        className="w-100" 
+        className="w-70 sm:w-100" 
         label="Nombre" type="text" name="name"
         required={false}
+        value={form.name}
         onChange={handleChange}
       />
       {errors.name as string ? 
@@ -87,10 +111,11 @@ export default function ContactForm() {
         <p className='mb-5.25'></p>}
       
       <Input 
-        className="w-100" 
+        className="w-70 sm:w-100" 
         label="E-Mail" type="email" name="email"
         labelClass="mt-3"
         required={false}
+        value={form.email}
         onChange={handleChange}
        />
       {errors.email as string ? 
@@ -104,7 +129,9 @@ export default function ContactForm() {
         name="message" 
         minLength={5} maxLength={500} rows={5} 
         required={false}
+        value={form.message}
         onChange={handleChange}
+        className='w-70 sm:w-100'
        />
       {errors.message as string ? 
         <p className="text-red-400 text-[12px] text-left mb-1">{errors.message}</p> 
@@ -114,7 +141,13 @@ export default function ContactForm() {
       <Button text="Enviar" type="submit" className="w-50">
         <Send className="w-4 h-4" /> Enviar
       </Button>
-      {result && <p>{result}</p>}
+      <Modal isOpen={openModal} onClose={() => setOpenModal(false)} title="Mensaje enviado" size='sm'>
+        <p className="text-center p-5">¡Su mensaje ha sido enviado con éxito!</p>
+        <div className='flex justify-center'>
+          <button onClick={() => setOpenModal(false)}
+            className='bg-zinc-700/40 hover:bg-zinc-500/40 transition-colors duration-300 px-4 py-2 rounded-md'>Aceptar</button>
+        </div>
+      </Modal>
     </form>
   );
 }   

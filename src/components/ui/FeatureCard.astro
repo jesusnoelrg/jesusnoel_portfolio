@@ -1,0 +1,20 @@
+--- 
+const { name, icon, description } = Astro.props;
+import IconDynamic from './IconDynamic.astro';
+---
+
+<div 
+  class="
+    flex flex-col items-start justify-start 
+    gap-2 p-6
+    border border-zinc-300 dark:border-zinc-900 rounded-2xl
+     bg-(--bg-card) dark:bg-(--bg-card-dark)
+     text-black dark:text-white
+     hover:bg-zinc-100 dark:hover:bg-zinc-900
+     transition-all duration-300
+    ">
+    <h1 class="text-md lg:text-xl xl:text-2xl font-bold flex items-center justify-center gap-2">
+        <IconDynamic name={icon} className="w-4 h-4" /> {name}
+    </h1>
+    <p>{description}</p>
+  </div>

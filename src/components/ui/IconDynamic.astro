@@ -1,0 +1,7 @@
+---
+const { name, className } = Astro.props;
+import * as LucideIcons from '@lucide/astro';
+
+const Icon = LucideIcons[name as keyof typeof LucideIcons] as any;
+---
+{Icon ? <Icon className={className} /> : <span class="text-red-500">Icon {name} not found</span>}

@@ -1,0 +1,51 @@
+[
+  {
+    "slug": "siah",
+    "title": "SIAH",
+    "metadata": {
+      "created_at": "2026",
+      "client": "Proyecto escolar",
+      "roles": "Analista de Datos, Diseñador de Interfaces",
+      "summary": "Modelo predictivo y plataforma de datos diseñada para correlacionar variables hidroclimatológicas con el impacto en el empleo agrícola del estado de Sonora.",
+      "featured": true
+    },
+    "assets": {
+      "banner": "../src/assets/projects/siah/siah.jpg"
+    },
+    "links": {
+      "github": "https://github.com/jesusnoel/siah",
+      "live_demo": "https://siah.vercel.app",
+      "preview": "https://siah.vercel.app",
+      "website": "https://siah.vercel.app"
+    },
+    "tech_stack": [ "Flutter", "Python", "FastAPI", "PostgreSQL", "Docker" ],
+    "content": {
+      "description": "Modelo predictivo y plataforma de datos diseñada para correlacionar variables hidroclimatológicas con el impacto en el empleo agrícola del estado de Sonora.",
+      "features": [
+        { "name": "Feature 1", "icon": "Zap", "description": "Descripción de la feature 1" },
+        { "name": "Feature 2", "icon": "ChartLine", "description": "Descripción de la feature 2" },
+        { "name": "Feature 3", "icon": "StickyNote", "description": "Descripción de la feature 3" }
+      ],
+      "challenges": [
+        { "name": "Challenge 1", "description": "Descripción del challenge 1", "solution": "Solución del challenge 1" },
+        { "name": "Challenge 2", "description": "Descripción del challenge 2", "solution": "Solución del challenge 2" },
+        { "name": "Challenge 3", "description": "Descripción del challenge 3", "solution": "Solución del challenge 3" }
+      ]
+    },
+    "gallery": {
+      "images": [
+        "../src/assets/projects/siah/img/menu_principal.png",
+        "../src/assets/projects/siah/img/datos_climaticos_1.png",
+        "../src/assets/projects/siah/img/datos_climaticos_2.png",
+        "../src/assets/projects/siah/img/escenarios_sequia_1.png",
+        "../src/assets/projects/siah/img/empleo_agricola_1.png",
+        "../src/assets/projects/siah/img/empleo_agricola_2.png",
+        "../src/assets/projects/siah/img/correlacion_1.png",
+        "../src/assets/projects/siah/img/correlacion_2.png",
+        "../src/assets/projects/siah/img/correlacion_3.png",
+        "../src/assets/projects/siah/img/vacantes_1.png"
+      ],
+      "videos": []
+    }
+  }
+]

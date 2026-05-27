@@ -48,8 +48,9 @@ const proyectos = [
   }
 ];
 ---
-<div id="projects" class="mb-30"></div>
-<section class="relative min-h-screen flex items-center justify-center">
+
+<section class="relative flex items-center justify-center mb-20">
+  <div id="projects" class="absolute -top-30"></div>
   <SoftAurora
     
     client:only="react"
@@ -69,7 +70,7 @@ const proyectos = [
     enableMouseInteraction
     mouseInfluence={0}
   />
-  <div class="flex flex-col items-center justify-center mx-10 md:mx-5 lg:mx-20 xl:mx-40 z-10">
+  <div class="flex flex-col items-center justify-center container z-10">
     <TextShimmer 
       text="MI EXPERIENCIA" 
       color1="#391d43" color2="#7d6187" color3="#391d43" 
@@ -98,4 +99,6 @@ const proyectos = [
           </div>
         </div>
       ))}
+    </div>
+  </div>
 </section>

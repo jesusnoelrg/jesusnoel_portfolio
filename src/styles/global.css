@@ -19,10 +19,45 @@
 }
 
 .container{
-  @apply mx-10;
+  @apply mx-10 md:mx-5 lg:mx-20 xl:mx-40;
 }
 
 .card-style{
   @apply bg-(--bg-card) dark:bg-(--bg-card-dark) p-10 rounded-2xl border border-zinc-300 dark:border-zinc-900
 }
 
+/*
+  Chrome/Safari (and similar) ignore background-color on autofilled inputs.
+  Inset box-shadow + long transition keeps our light/dark palette on autofill.
+*/
+input.input-autofill:-webkit-autofill,
+input.input-autofill:-webkit-autofill:hover,
+input.input-autofill:-webkit-autofill:focus,
+input.input-autofill:-webkit-autofill:active {
+  -webkit-text-fill-color: rgb(39 39 42);
+  caret-color: rgb(39 39 42);
+  -webkit-box-shadow: 0 0 0 1000px rgb(255 255 255) inset;
+  box-shadow: 0 0 0 1000px rgb(255 255 255) inset;
+  transition: background-color 99999s ease-out 0s;
+}
+
+.dark input.input-autofill:-webkit-autofill,
+.dark input.input-autofill:-webkit-autofill:hover,
+.dark input.input-autofill:-webkit-autofill:focus,
+.dark input.input-autofill:-webkit-autofill:active {
+  -webkit-text-fill-color: rgb(161 161 170);
+  caret-color: rgb(161 161 170);
+  -webkit-box-shadow: 0 0 0 1000px rgb(24 24 27 / 0.3) inset;
+  box-shadow: 0 0 0 1000px rgb(24 24 27 / 0.3) inset;
+}
+
+/* Firefox autofill (where supported) */
+input.input-autofill:-moz-autofill {
+  background-color: rgb(255 255 255);
+  color: rgb(39 39 42);
+}
+
+.dark input.input-autofill:-moz-autofill {
+  background-color: rgb(24 24 27 / 0.3);
+  color: rgb(161 161 170);
+}

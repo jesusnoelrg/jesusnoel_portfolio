@@ -9,10 +9,11 @@ import { Mail } from '@lucide/Astro';
 ---
 <section class="
         relative 
-        h-120
-        flex flex-col justify-center items-start
+        flex flex-col justify-center items-center
+        my-40
+        z-20
         text-black dark:text-white">
-  
+
   <SoftAurora
 
       client:only="react"
@@ -33,18 +34,18 @@ import { Mail } from '@lucide/Astro';
       mouseInfluence={0}
     />
 
-  <div class="flex flex-col gap-4 items-center justify-center mx-20 xl:mx-40 z-10">
-    
-
-    <p class="text-3xl text-black dark:text-white">¡Hola, soy Jesús Noel!</p>
-    <h1 class="text-5xl text-center md:text-6xl font-medium text-pretty leading-none text-black dark:text-white">
-      Desarrollador de 
-      <TextShimmer text="Software" color1="#391d43" color2="#7d6187" color3="#391d43" class="font-bold" />
-    </h1>
-    <p class="text-md md:text-2xl text-shadow-lg text-center leading-relaxed text-balance text-gray-800 dark:text-gray-300">
-      Ingeniero de Software <span class="text-purple-400">enfocado</span> en arquitectura de sistemas, optimización 
-      de bases de datos y aplicaciones de alto rendimiento.
-    </p>
+  <div class="flex flex-col items-center justify-center container relative z-10">
+    <div class="text-center gap-5">
+      <p class="text-xl md:text-2xl lg:text-3xl text-black dark:text-white">¡Hola, soy Jesús Noel!</p>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-medium text-pretty leading-none text-black dark:text-white">
+        Desarrollador de 
+        <TextShimmer text="Software" color1="#391d43" color2="#7d6187" color3="#391d43" class="font-bold" />
+      </h1>
+      <p class="px-10 md:px-15 lg:px-35 xl:px-50 text-md md:text-2xl text-shadow-lg text-center leading-relaxed text-balance text-gray-800 dark:text-gray-300">
+        Ingeniero de Software <span class="text-purple-400">enfocado</span> en arquitectura de sistemas, optimización 
+        de bases de datos y aplicaciones de alto rendimiento.
+      </p>
+    </div>
     <nav aria-label="redes-sociales" class="mt-10">
       <ul class="flex gap-8">
         <li>

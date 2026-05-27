@@ -1,0 +1,51 @@
+---
+import { ChevronRight } from "lucide-react";
+
+const pathname = Astro.url.pathname;
+
+const normalizePath = (text: string) => {
+  if(!text) return "";
+
+  return text
+    .replace('_', '-')
+    .replace(' ', '')
+    .split("-")
+    .map(t => t.charAt(0).toUpperCase() + t.slice(1))
+    .join(" ");
+}
+
+const getPaths = (paths: string) => {
+  return paths
+    .split('/')
+    .filter(t => t !== "");
+}
+
+const segments = getPaths(pathname);
+const listPath = segments.map(t => normalizePath(t == "projects" ? "Proyectos" : t.trim() ));
+---
+
+<ul class="flex text-center text-zinc-700 dark:text-zinc-300">
+  <li class="text-center">
+    <a href="/" class="hover:text-zinc-400 dark:hover:text-zinc-400 transition-colors duration-300">
+      Inicio
+    </a>
+  </li>
+  {
+    listPath.map((element, index) => {
+      const currentPath = "/" + segments.slice(0, index  + 1).join("/") ;
+
+      return (
+        <li class="flex items-center"><ChevronRight className="w-4.5 h-4.5 mx-2" /> 
+          <a 
+            class={`
+              ${index == listPath.length - 1 ? "pointer-events-none text-black dark:text-white" : ""}
+              hover:text-zinc-400 dark:hover:text-zinc-400 transition-colors duration-300 `}
+            href={currentPath}
+          >
+            {element}
+          </a>
+        </li>
+      )
+    })
+  }
+</ul>
