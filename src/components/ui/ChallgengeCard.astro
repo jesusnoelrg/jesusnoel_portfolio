@@ -1,0 +1,38 @@
+---
+const { name, description, solution } = Astro.props;
+import { ArrowRight } from '@lucide/astro';
+---
+
+<div class="flex items-center justify-center gap-4">
+  <div 
+    class="
+      flex flex-col items-start justify-start 
+      gap-2 p-6
+      border border-zinc-300 dark:border-amber-800/30 rounded-2xl 
+      shadow-md shadow-amber-800/10 dark:shadow-amber-800/30
+      bg-amber-300/10 dark:bg-amber-900/10
+      text-amber-800 dark:text-amber-200
+      hover:bg-amber-300/20 dark:hover:bg-amber-900/20
+      hover:shadow-amber-800/30 dark:hover:shadow-amber-800/60
+      transition-all duration-300
+    ">
+    <h1 class="text-md lg:text-xl xl:text-2xl font-bold">Reto</h1>
+    <p>{description}</p>
+  </div>
+  <ArrowRight class="w-4 h-4 text-zinc-500 dark:text-zinc-400" />
+  <div 
+    class="
+      flex flex-col items-start justify-start 
+      gap-2 p-6
+      border border-zinc-300 dark:border-green-800/30 rounded-2xl
+      shadow-md shadow-green-800/10 dark:shadow-green-800/30
+      bg-lime-300/10 dark:bg-lime-900/10
+      text-green-800 dark:text-green-200
+      hover:bg-green-800/20 dark:hover:bg-green-900/20
+      hover:shadow-green-800/30 dark:hover:shadow-green-800/60
+      transition-all duration-300
+    ">
+    <h1 class="text-md lg:text-xl xl:text-2xl font-bold">Solución</h1>
+    <p>{solution}</p>
+  </div>
+</div>

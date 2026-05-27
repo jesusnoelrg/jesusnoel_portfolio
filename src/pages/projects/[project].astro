@@ -1,0 +1,24 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '@components/layout/Nav.astro';
+
+import ProjectDetail from '@components/layout/ProjectDetail.astro';
+import projects from '../../data/projects.json';
+
+import '../../styles/global.css';
+
+export function getStaticPaths() {
+  return projects.map((p) => ({
+    params: {project: p.slug},
+    props: {project: p}
+  }))
+}
+
+// Accedes al parámetro de la URL
+const { project } = Astro.props;
+---
+
+<Layout>
+  <Nav />
+  <ProjectDetail project={project} />
+</Layout>

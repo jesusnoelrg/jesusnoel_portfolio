@@ -1,0 +1,37 @@
+---
+import AstroIcon from "@assets/icons/astro.svg";
+import TailwindCSS from "@assets/icons/tailwindcss.svg";
+import ReactJS from "@assets/icons/reactjs.svg";
+import TypeScript from "@assets/icons/typescript.svg";
+
+
+const technologies = [
+  { name: "Astro", icon: AstroIcon},
+  { name: "TailwindCSS", icon: TailwindCSS},
+  { name: "React", icon: ReactJS},
+  { name: "TypeScript", icon: TypeScript}
+]
+---
+
+<footer class="flex items-center justify-center text-black dark:text-white">
+  <div class="container w-full flex flex-col md:flex-row justify-evenly items-center py-10">
+    <p class=" mb-5 md:mb-0  text-zinc-500 dark:text-zinc-500">© 2026 Jesús Noel. All rights reserved.</p>
+    <div class="flex flex-col justify-center items-center">
+      <span class="mb-5 text-md text-zinc-800 dark:text-zinc-400">Tecnologías usadas en esta web</span>
+      <div class="flex justify-center items-center gap-5 lg:gap-6">
+        {
+          technologies.map(({name, icon}) => (
+            <div class="flex flex-col items-center">
+              <img 
+                src={icon.src} 
+                alt={name} 
+                class={`w-6 h-6 lg:w-8 lg:h-8 ${name == 'Astro' ? "invert dark:invert-0" : ""}`}
+              />
+              <span class="text-[10px] lg:text-[12px]">{name}</span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</footer>

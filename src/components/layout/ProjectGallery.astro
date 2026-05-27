@@ -1,0 +1,54 @@
+---
+import ProjectMediaViewer from '@components/ui/ProjectMediaViewer.tsx';
+
+const { images, videos } = Astro.props;
+
+const media = [...images, ...videos];
+---
+
+<script>
+  const images = document.querySelectorAll('#miniature');
+  images.forEach(image => {
+    image.addEventListener('click', () => {
+      const index = image.getAttribute('data-index');
+      const event = new CustomEvent('openMediaViewer', { 
+        detail: { index: index } 
+      });
+      document.dispatchEvent(event);
+    });
+  });
+</script>
+
+<section>
+  <div class="flex flex-col items-center justify-center gap-3 mb-10 border border-zinc-300 dark:border-zinc-900 rounded-2xl p-6 bg-(--bg-card) dark:bg-(--bg-card-dark)">
+    <h2 class="text-2xl sm:text-3xl lg:text-2xl xl:text-3xl font-bold text-center">Galería</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 my-10">
+        {media.map((item: any, index: number) => (
+          <div 
+            class="
+              relative
+            ">
+            <div 
+              class="
+                absolute top-0 left-0 
+                w-full h-full
+                flex items-center justify-center 
+                hover:bg-black/70 rounded-2xl
+                hover:text-white text-transparent
+                transition-all duration-300
+                cursor-pointer
+                
+              " data-index={index} id="miniature">
+              <span class="text-sm">Clic para ver la imagen</span>
+            </div>
+            {item.type === 'video' ? (
+              <video src={item} class="w-full h-full object-cover rounded-2xl" />
+            ) : (
+              <img src={item} class="w-full h-full object-cover rounded-2xl" />
+            )}
+          </div>
+        ))}
+    </div>
+  </div>
+  <ProjectMediaViewer client:only="react" media={media} />
+</section>

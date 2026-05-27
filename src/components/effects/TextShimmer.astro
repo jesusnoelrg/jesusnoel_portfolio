@@ -1,0 +1,37 @@
+---
+interface TextShimmerProps {
+  text: string;
+  duration?: string;
+  deg?: string;
+  color1?: string;
+  color2?: string;
+  color3?: string;
+  class?: string;
+}
+
+const { text, duration = '5s', deg='135deg', color1 = '#ffffff', color2 = '#5e5e5e', color3 = '#ffffff', class: className } = Astro.props as TextShimmerProps;
+---
+
+<style define:vars={{duration,deg, color1, color2, color3 }}>
+  .text-shimmer {
+    font-family: "Montserrat", sans-serif;
+    background: linear-gradient(var(--deg), var(--color1), var(--color2), var(--color3));
+    background-clip: text;
+    color: transparent;
+    background-size: 200% 100%;
+    animation: shimmer var(--duration) linear infinite;
+    }
+
+  @keyframes shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+       background-position: -200% 0;
+    }
+  }
+</style>
+
+<div class:list={["text-shimmer", className]}>
+  {text}
+</div>

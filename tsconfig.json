@@ -14,6 +14,12 @@
       ],
       "@assets/*": [
         "./src/assets/*"
+      ],
+      "@my_stack/*": [
+        "./src/assets/my_stack/*"
+      ],
+      "@projects/*": [
+        "./src/assets/projects/*"
       ]
     },
     "jsx": "react-jsx",

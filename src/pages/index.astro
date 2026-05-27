@@ -1,18 +1,21 @@
 ---
-import Welcome from '../components/Welcome.astro';
+import Nav from '@components/layout/Nav.astro';
+import Hero from '@components/sections/Hero.astro';
+import About from '@components/sections/About.astro';
+import Projects from '@components/sections/Projects.astro';
+import Techologies from '@components/sections/Techologies.astro';
+import Contact from '@components/sections/Contact.astro';
+import Footer from '@components/layout/Footer.astro';
 import Layout from '../layouts/Layout.astro';
-import { Camera } from '@lucide/astro';
 import '../styles/global.css';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Welcome />
-	<div>
-		<h1 class="text-yellow-500">Welcome to Astro!</h1>
-		<Camera color="#ff3e98" />
-		<p>Wondering what to do next? Check out the Astro documentation at https://docs.astro.build</p>
-	</div>
+	<Nav />
+	<Hero />
+	<About />
+  <Projects />
+  <Techologies />
+	<Contact />
+	<Footer />
 </Layout>

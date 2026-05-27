@@ -1,0 +1,16 @@
+[
+  { "name": "Flutter", "url_img": "../src/assets/icons/flutter.svg" },
+  { "name": "Python", "url_img": "../src/assets/icons/python.svg" },
+  { "name": "FastAPI", "url_img": "../src/assets/icons/fastapi.svg" },
+  { "name": "PostgreSQL", "url_img": "../src/assets/icons/postgresql.svg" },
+  { "name": "Docker", "url_img": "../src/assets/icons/docker.svg" },
+  { "name": "React", "url_img": "../src/assets/icons/react.svg" },
+  { "name": "Next.js", "url_img": "../src/assets/icons/nextjs.svg" },
+  { "name": "Astro", "url_img": "../src/assets/icons/astro.svg" },
+  { "name": "JavaScript", "url_img": "../src/assets/icons/javascript.svg" },
+  { "name": "TailwindCSS", "url_img": "../src/assets/icons/tailwindcss.svg" },
+  { "name": "Bootstrap", "url_img": "../src/assets/icons/bootstrap.svg" },
+  { "name": "Sass", "url_img": "../src/assets/icons/sass.svg" },
+  { "name": "Node.js", "url_img": "../src/assets/icons/nodejs.svg" },
+  { "name": "Express", "url_img": "../src/assets/icons/express.svg" }
+]
