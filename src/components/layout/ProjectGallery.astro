@@ -21,7 +21,7 @@ const media = [...images, ...videos];
 
 <section>
   <div class="flex flex-col items-center justify-center gap-3 mb-10 border border-zinc-300 dark:border-zinc-900 rounded-2xl p-6 bg-(--bg-card) dark:bg-(--bg-card-dark)">
-    <h2 class="text-2xl sm:text-3xl lg:text-2xl xl:text-3xl font-bold text-center">Galería</h2>
+    <h2 id="project-gallery" class="title-content text-2xl sm:text-3xl lg:text-2xl xl:text-3xl font-bold text-center">Galería</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 my-10">
         {media.map((item: any, index: number) => (
           <div 
