@@ -2,11 +2,11 @@
 const { project } = Astro.props;
 import technologies from '../../data/technologies.json';
 import Breadcrumb from '@components/ui/Breadcrumb.astro';
-import { Pin } from '@lucide/astro';
 import Badge from '@components/ui/Badge.astro';
 import ChallgengeCard from '@components/ui/ChallgengeCard.astro';
 import FeatureCard from '@components/ui/FeatureCard.astro';
 import ProjectGallery from '@components/layout/ProjectGallery.astro';
+import TableOfContents from '@components/ui/TableOfContents.tsx';
 ---
 
 <section class="flex items-center justify-center">
@@ -24,7 +24,7 @@ import ProjectGallery from '@components/layout/ProjectGallery.astro';
           rounded-2xl border border-zinc-300 dark:border-zinc-900
           bg-(--bg-card) dark:bg-(--bg-card-dark) text-black dark:text-white
       ">
-        <h1 class="text-2xl sm:text-3xl lg:text-2xl xl:text-3xl font-bold">{project?.title}</h1>
+        <h1 id="project-title" class="title-content text-2xl sm:text-3xl lg:text-2xl xl:text-3xl font-bold">{project?.title}</h1>
         <div class="flex flex-col items-start justify-center my-5">
           <p class="font-bold text-[15px] sm:text-base lg:text-sm xl:text-base" >Resumen: </p>
           <p class="text-[13px] sm:text-base lg:text-[12px] xl:text-sm dark:text-gray-300 text-gray-700">{project?.metadata?.summary ?? "N/A"}</p>
@@ -43,7 +43,7 @@ import ProjectGallery from '@components/layout/ProjectGallery.astro';
     <div class="flex flex-col lg:flex-row justify-center items-stretch gap-6 my-10">
       <section class="w-full lg:w-3/4">
         <div class="flex flex-col items-start justify-start gap-3 mb-10 border border-zinc-300 dark:border-zinc-900 rounded-2xl p-6 bg-(--bg-card) dark:bg-(--bg-card-dark)">
-          <h2 class="text-2xl sm:text-3xl lg:text-2xl xl:text-3xl font-bold">¿Qué es {project?.title}?</h2>
+          <h2 id="project-description" class="title-content text-2xl sm:text-3xl lg:text-2xl xl:text-3xl font-bold">¿Qué es {project?.title}?</h2>
           <p class="text-[13px] sm:text-base lg:text-[12px] xl:text-[16px] text-gray-700 dark:text-gray-300">{project?.content?.description ?? "N/A"}</p>
           <p class="font-bold text-[13px] sm:text-base lg:text-[12px] xl:text-base" >Tecnologías utilizadas</p>
           <div class="flex flex-wrap gap-2">
@@ -53,7 +53,7 @@ import ProjectGallery from '@components/layout/ProjectGallery.astro';
           </div>
         </div>
         <div class="flex flex-col items-center justify-center gap-3 mb-10 border border-zinc-300 dark:border-zinc-900 rounded-2xl p-6 bg-(--bg-card) dark:bg-(--bg-card-dark)">
-          <h2 class="text-2xl sm:text-3xl lg:text-2xl xl:text-3xl font-bold text-center">Retos</h2>
+          <h2 id="project-challenges" class="title-content text-2xl sm:text-3xl lg:text-2xl xl:text-3xl font-bold text-center">Retos</h2>
           <div class="flex flex-col items-center justify-center gap-4 my-10">
             {project?.content?.challenges.map((challenge: any) => (
               <ChallgengeCard 
@@ -72,7 +72,7 @@ import ProjectGallery from '@components/layout/ProjectGallery.astro';
             border border-zinc-300 dark:border-zinc-900 rounded-2xl
             bg-(--bg-card) dark:bg-(--bg-card-dark)
           ">
-          <h2 class="text-2xl sm:text-3xl lg:text-2xl xl:text-3xl font-bold text-center">Características</h2>
+          <h2 id="project-features" class="title-content text-2xl sm:text-3xl lg:text-2xl xl:text-3xl font-bold text-center">Características</h2>
           <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 my-10">
             {project?.content?.features.map((feature: any) => (
               <FeatureCard 
@@ -91,12 +91,7 @@ import ProjectGallery from '@components/layout/ProjectGallery.astro';
         }
         <ProjectGallery images={project?.gallery?.images ?? []} videos={project?.gallery?.videos ?? []} />
       </section>
-      <nav class="w-full lg:w-1/4 sticky text-start top-35 text-black dark:text-white h-full">
-        <span class="flex items-center justify-center gap-2">
-          <Pin class="w-4 h-4" />
-          <span class="text-[13px] sm:text-base lg:text-[12px] xl:text-sm text-gray-300">En esta página</span>
-        </span>
-      </nav>
+      <TableOfContents client:only="react" />
     </div>
   </div>
 </section>

@@ -1,22 +1,10 @@
 import { useState, useEffect } from "react";
 import { X, ArrowRight, ArrowLeft } from "lucide-react";
-import { TransformWrapper, TransformComponent, useControls } from "react-zoom-pan-pinch";
+import { TransformWrapper, TransformComponent} from "react-zoom-pan-pinch";
 
 interface PropsProjectMediaViewer {
   media: any[];
 }
-
-const Controls = () => {
-  const { zoomIn, zoomOut, resetTransform } = useControls();
-
-  return (
-    <div className="tools">
-      <button onClick={() => zoomIn()}>+</button>
-      <button onClick={() => zoomOut()}>-</button>
-      <button onClick={() => resetTransform()}>x</button>
-    </div>
-  );
-};
 
 
 
@@ -108,6 +96,7 @@ export default function ProjectMediaViewer({ media }: PropsProjectMediaViewer) {
       {/* Contenedor imagen*/}
       <TransformWrapper>
         <TransformComponent>
+          
           <div 
         className="
           w-full sm:max-w-lg md:max-w-2xl lg:max-w-4xl xl:max-w-6xl max-h-[80vh] 
