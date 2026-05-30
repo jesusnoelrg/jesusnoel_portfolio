@@ -13,10 +13,8 @@
       "banner": "../src/assets/projects/siah/siah.jpg"
     },
     "links": {
-      "github": "https://github.com/jesusnoel/siah",
-      "live_demo": "https://siah.vercel.app",
-      "preview": "https://siah.vercel.app",
-      "website": "https://siah.vercel.app"
+      "repository": "https://github.com/jesusnoel/siah",
+      "demo": ""
     },
     "tech_stack": [ "Flutter", "Python", "FastAPI", "PostgreSQL", "Docker" ],
     "content": {

@@ -1,0 +1,31 @@
+---
+import GitHub from "../../assets/icons/github.svg";
+import {LaptopMinimal} from "@lucide/astro";
+
+const { links } = Astro.props;
+
+const networks = [
+  {
+    name: "GitHub",
+    icon: GitHub,
+    href: links?.repository
+  },
+  {
+    name: "Demo",
+    icon: LaptopMinimal,
+    href: links?.demo
+  }
+]
+---
+
+<div class="sticky top-90 right-0 w-full flex items-center justify-center gap-4 p-2">
+  {networks
+    .filter(({href}) => href !== null && href !== '')
+    .map(({name, icon: Icon, href}) => (
+    
+    <a href={href} target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center gap-2 hover:scale-110 transition-all duration-300">
+      <Icon class="w-8 h-8 text-black dark:text-white" />
+      <span class="text-sm text-black dark:text-white">{name}</span>
+    </a>
+  ))}
+</div> 
