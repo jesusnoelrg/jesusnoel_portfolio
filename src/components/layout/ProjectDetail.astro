@@ -7,6 +7,7 @@ import ChallgengeCard from '@components/ui/ChallgengeCard.astro';
 import FeatureCard from '@components/ui/FeatureCard.astro';
 import ProjectGallery from '@components/layout/ProjectGallery.astro';
 import TableOfContents from '@components/ui/TableOfContents.tsx';
+import ProjectLinks from '@components/layout/ProjectLinks.astro';
 ---
 
 <section class="flex items-center justify-center">
@@ -91,7 +92,10 @@ import TableOfContents from '@components/ui/TableOfContents.tsx';
         }
         <ProjectGallery images={project?.gallery?.images ?? []} videos={project?.gallery?.videos ?? []} />
       </section>
-      <TableOfContents client:only="react" />
+      <div class="flex flex-col items-start justify-start gap-5">
+        <TableOfContents client:only="react" />
+        <ProjectLinks links={project?.links ?? []} />
+      </div>
     </div>
   </div>
 </section>

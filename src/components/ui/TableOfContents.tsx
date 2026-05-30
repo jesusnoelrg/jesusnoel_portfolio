@@ -77,7 +77,7 @@ export default function TableOfContents() {
   return (
     <nav 
       className="
-        w-full lg:w-1/4 h-full 
+        w-full
         sticky top-35 
         text-start
         bg-(--bg-card) dark:bg-(--bg-card-dark)
