@@ -10,10 +10,11 @@
       "featured": true
     },
     "assets": {
-      "banner": "../src/assets/projects/siah/siah.jpg"
+      "banner": "../src/assets/projects/siah/siah.jpg",
+      "present": "../src/assets/projects/siah/present.png"
     },
     "links": {
-      "repository": {"link": "https://github.com/jesusnoel/siah", "platform": "GitHub"},
+      "repository": {},
       "demo": ""
     },
     "tech_stack": [ "Flutter", "Python", "FastAPI", "PostgreSQL", "Docker" ],
@@ -21,41 +22,86 @@
       "description": "SIAH es una plataforma de análisis avanzado orientada al sector agrícola de Sonora. Centraliza datos climatológicos históricos y registros de empleo para entrenar un modelo predictivo capaz de anticipar fluctuaciones laborales en las zonas de riego basadas en la severidad de las sequías.",
       "features": [
         { 
-          "name": "Ingesta de Datos Climáticos", 
+          "name": "Ingesta de datos climáticos", 
           "icon": "CloudRain", 
           "description": "Procesamiento automatizado de variables hidroclimatológicas críticas como precipitación, niveles de presas y estrés hídrico por municipio." 
         },
         { 
-          "name": "Modelado Predictivo con Python", 
+          "name": "Modelado predictivo con Python", 
           "icon": "BrainCircuit", 
-          "description": "Algoritmo de correlación lineal y regresión diseñado para proyectar la pérdida o ganancia de empleos jornaleros según escenarios de sequía." 
+          "description": "Algoritmo K-Nearest Neighbors para predecir la precipitación. Random Forest para predecir los sectores de empleo. LSTMs para predecir el nivel de almacenamiento de agua en las presas." 
         },
         { 
-          "name": "Simulación de Escenarios", 
-          "icon": "Sliders", 
-          "description": "Panel interactivo que permite modular variables de temperatura y escasez hídrica para visualizar impactos económicos preventivos." 
+          "name": "Simulación de escenarios", 
+          "icon": "Settings2", 
+          "description": "Panel interactivo con un slider para simular la disponibilidad de agua en toda la región." 
         },
         { 
-          "name": "Monitoreo de Vacantes", 
+          "name": "Monitoreo de vacantes informales", 
           "icon": "Briefcase", 
-          "description": "Módulo de seguimiento en tiempo real para la oferta de empleo activa y mitigación de vacantes afectadas en las regiones vulnerables." 
+          "description": "Módulo para encontrar empleos informales para las personas más afectadas por la perdida de empleo." 
+        },
+        {
+          "name": "Correlación de variables", 
+          "icon": "ChartLine", 
+          "description": "Panel interactivo para correlacionar distintas variables vs el empleo del sector seleccionado, incluye gráfica de tendencia y correlación." 
+        },
+        {
+          "name": "Scrape de datos de empleo", 
+          "icon": "IdCardLanyard", 
+          "description": "Scrape de datos de distintos portales de empleo para obtener los datos de empleo y analizarlos con IA." 
+        },
+        {
+          "name": "Chatbot con IA", 
+          "icon": "Bot", 
+          "description": "Integración con IA para obtener respuestas a preguntas frecuentes y resolver dudas sobre los datos de la plataforma. La IA puede obtener información en Internet para responder preguntas que no se encuentran en la plataforma." 
+        },
+        {
+          "name": "Mapa regional", 
+          "icon": "Map", 
+          "description": "Incluye 3 mapas interactivos para visualizar los empleos por municipio, niveles de almacenamiento de agua en las presas y distritos de riego." 
+        },
+        {
+          "name": "Calculo de rentabilidad", 
+          "icon": "Calculator", 
+          "description": "Calculo de rentabilidad para cada cultivo dependiendo en que distrito de riego se encuentra y el ciclo de cultivo futuro." 
+        },
+        {
+          "name": "CRUD de usuarios", 
+          "icon": "User", 
+          "description": "CRUD de usuarios para administrar la plataforma. Incluye manejo de roles y permisos." 
         }
       ],
       "challenges": [
         { 
-          "name": "Normalización de fuentes heterogéneas", 
+          "name": "Normalización de fuentes", 
           "description": "Los registros climáticos y las métricas de empleo venían en formatos completamente distintos, con desfases temporales y datos nulos.", 
           "solution": "Se diseñó un pipeline de limpieza en Python usando Pandas para estandarizar las fechas, imputar valores faltantes por vecindad geográfica y unificar la base de datos en PostgreSQL." 
         },
         { 
-          "name": "Latencia en cálculos masivos de correlación", 
-          "description": "Ejecutar las matrices de correlación en tiempo real de múltiples municipios colapsaba la memoria del servidor de la API.", 
-          "solution": "Se migraron las operaciones pesadas de análisis a consultas indexadas nativas en PostgreSQL y se implementó un sistema de respuestas cacheadas en FastAPI." 
+          "name": "Complejidad en variables no lineales", 
+          "description": "Los modelos de predicción no eran suficientemente precisos ya que daban un R2 muy bajo para obtener una predicción satisfactoria de cada sector de empleo.", 
+          "solution": "Se optó por obtener una predicción de Random Forest Regressor para cada sector de empleo ya que las variables no son linealmente dependientes." 
         },
         { 
-          "name": "Consistencia de interfaz multiplataforma", 
-          "description": "Hacer que las gráficas complejas de correlación y mapas mantuvieran un rendimiento fluido tanto en web como en móviles.", 
-          "solution": "Se utilizó Flutter estructurando la renderización mediante micro-componentes optimizados y desacoplados del hilo principal de procesamiento." 
+          "name": "Limitaciones de entorno en el Web Scraping masivo", 
+          "description": "La arquitectura inicial utilizaba Playwright para extraer datos de estaciones climatológicas. Sin embargo, al desplegar en Render, el contenedor fallaba constantemente debido al consumo masivo de memoria RAM y la falta de dependencias del sistema para ejecutar instancias de Chromium.", 
+          "solution": "Se reestructuró el pipeline de extracción migrando a un enfoque ligero con HTTPX para las peticiones asíncronas de red y BeautifulSoup para el parseo del DOM. Esto redujo el consumo de recursos, eliminó los bloqueos de infraestructura y estabilizó los crons de ingesta de datos en el servidor." 
+        },
+        {
+          "name": "Respuestas de IA no satisfactorias", 
+          "description": "Las respuestas de IA no eran satisfactorias ya que no obtenian la información correcta o no respondian a las preguntas donde se necesitaba información en Internet.", 
+          "solution": "Se refactorizo el prompt interno de la IA para que tenga acceso en toda la plataforma para obtener la información correcta y acceso a Internet para responder preguntas que no se encuentran en la plataforma." 
+        },
+        {
+          "name": "Respuestas lentas de la API", 
+          "description": "Las respuestas de la API eran lentas ya que se realizaban calculos complejos en el backend.", 
+          "solution": "Se implemento un sistema de cache que se actualiza dependiendo de la ruta y parametros para las respuestas de la API para evitar recalcular las mismas respuestas." 
+        },
+        {
+          "name": "Burbuja del chatbot", 
+          "description": "La burbuja que abría el chat con la IA tapaba la vista de la aplicación.", 
+          "solution": "Se implemento Edge Snapping para que la burbuja se comporte como una ventana flotante que se puede mover y se imanta hacía los lados de la pantalla." 
         }
       ]
     },
@@ -65,11 +111,21 @@
         "../src/assets/projects/siah/img/datos_climaticos_1.png",
         "../src/assets/projects/siah/img/datos_climaticos_2.png",
         "../src/assets/projects/siah/img/escenarios_sequia_1.png",
+        "../src/assets/projects/siah/img/escenarios_sequia_2.png",
+        "../src/assets/projects/siah/img/mapa_regional_1.png",
+        "../src/assets/projects/siah/img/mapa_regional_2.png",
+        "../src/assets/projects/siah/img/mapa_regional_3.png",
+        "../src/assets/projects/siah/img/mapa_regional_4.png",
+        "../src/assets/projects/siah/img/mapa_regional_5.png",
         "../src/assets/projects/siah/img/empleo_agricola_1.png",
         "../src/assets/projects/siah/img/empleo_agricola_2.png",
         "../src/assets/projects/siah/img/correlacion_1.png",
         "../src/assets/projects/siah/img/correlacion_2.png",
         "../src/assets/projects/siah/img/correlacion_3.png",
+        "../src/assets/projects/siah/img/correlacion_4.png",
+        "../src/assets/projects/siah/img/chatbot_1.png",
+        "../src/assets/projects/siah/img/chatbot_2.png",
+        "../src/assets/projects/siah/img/chatbot_3.png",
         "../src/assets/projects/siah/img/vacantes_1.png"
       ],
       "videos": []

@@ -2,51 +2,19 @@
 import TextShimmer from '@components/effects/TextShimmer.astro';
 import SoftAurora from '@components/effects/SoftAurora.tsx';
 import Badge from '@components/ui/Badge.astro';
+import projects from '../../data/projects.json';
+import technologies from '../../data/technologies.json';
+import { ArrowRight } from 'lucide-react';
 
-const proyectos = [
+const proyectos = projects.map(project => (
   {
-    title: "SIAH",
-    description: "Modelo predictivo y plataforma de datos diseñada para correlacionar variables hidroclimatológicas con el impacto en el empleo agrícola del estado de Sonora.",
-    image: "../src/assets/projects/siah/present.png",
-    techStack: [
-      { url_img: "../../src/assets/icons/flutter.svg", text: "Flutter" },
-      { url_img: "../../src/assets/icons/python.svg", text: "Python" },
-      { url_img: "../src/assets/icons/fastapi.svg", text: "FastAPI" },
-      { url_img: "../src/assets/icons/postgresql.svg", text: "PostgreSQL" },
-      { url_img: "../src/assets/icons/docker.svg", text: "Docker" }]
-  },
-  {
-    title: "JusticIA",
-    description: "MVP modular para el análisis inteligente de documentos legales. Utiliza procesamiento de lenguaje natural para organizar expedientes por casos y detectar riesgos normativos.",
-    image: "../src/assets/projects/justicia/present.png",
-    techStack: [
-      { url_img: "../../src/assets/icons/nextjs.svg", text: "Next.js" },
-      { url_img: "../../src/assets/icons/reactjs.svg", text: "React" },
-      { url_img: "../../src/assets/icons/clerk-icon-light.svg", text: "Clerk" },
-    ]
-  },
-  {
-    title: "Control total de materiales eléctricos",
-    description: "Sistema de gestión de inventario desarrollado para el Ayuntamiento de Navojoa, automatizando el control de suministros eléctricos y la generación de reportes.",
-    image: "../src/assets/projects/electro_inventario/present.png",
-    techStack: [
-      { url_img: "../../src/assets/icons/nextjs.svg", text: "Next.js" },
-      { url_img: "../../src/assets/icons/reactjs.svg", text: "React" },
-      { url_img: "../src/assets/icons/prisma.svg", text: "Prisma" },
-      { url_img: "../src/assets/icons/sqlite.svg", text: "SQLite" },
-      { url_img: "../src/assets/icons/docker.svg", text: "Docker" }]
-  },
-  {
-    title: "SauceOps",
-    description: "Sistema de gestión de inventario y control de stock diseñado para optimizar la cadena de suministro de productos alimenticios.",
-    image: "../src/assets/projects/sauceops/present.png",
-    techStack: [
-      { url_img: "../../src/assets/icons/expressjs.svg", text: "Express", invert: true },
-      { url_img: "../../src/assets/icons/bootstrap.svg", text: "Bootstrap" },
-      { url_img: "../../src/assets/icons/javascript.svg", text: "JavaScript" },
-      { url_img: "../../src/assets/icons/sqlite.svg", text: "SQLite" }]
+    slug: project.slug,
+    title: project.title,
+    image: project.assets.present,
+    description: project.content.description,
+    techStack: project.tech_stack,
   }
-];
+));
 ---
 
 <section class="relative flex items-center justify-center mb-20">
@@ -80,23 +48,33 @@ const proyectos = [
     
     <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
       {proyectos.map(proyecto => (
-        <div class="
+        <div 
+          class="
+            relative group
             p-6 
             border border-zinc-300 dark:border-zinc-900 rounded-2xl
            bg-(--bg-card) dark:bg-(--bg-card-dark)
-           hover:scale-105 transition-transform duration-300">
+            hover:scale-105 transition-transform duration-300">
+          <a href={`/projects/${proyecto.slug}`} class="after:absolute after:inset-0"></a>
           <div>
             <img src={proyecto.image} alt={proyecto.title} class="w-full h-70 object-cover rounded-lg mb-4" />
           </div>
           <h3 class="text-xl lg:text-2xl font-bold mb-2 text-black dark:text-white">{proyecto.title}</h3>
           <p class="text-sm lg:text-[16px] text-gray-800 dark:text-gray-300">{proyecto.description}</p>
           <div class="flex flex-wrap gap-2 mt-4">
-            {proyecto.techStack.map(tech => (
-              <Badge url_img={tech.url_img} text={tech.text} 
-                className={`${tech.invert ? "invert dark:invert-0" : ""}`}
-              />
+            {proyecto.techStack.map(technology => (
+              <Badge url_img={technologies.find(t => t.name === technology)?.url_img} text={technology} />
             ))}
           </div>
+          <span
+            class="
+              flex items-center justify-start
+              px-3 py-1 mt-4 rounded-2xl
+              text-purple-400/70 group-hover:text-purple-300/70 group-hover:underline
+              transition-colors duration-300">
+              Ver proyecto
+              <ArrowRight className="w-4 h-4" />
+            </span>
         </div>
       ))}
     </div>
