@@ -1,11 +1,14 @@
 
 import { Pin } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 type TocEntry = { id: string; label: string };
 
-export default function TableOfContents() {
-  const [sections, setSections] = useState<TocEntry[]>([]);
+interface TableOfContentsProps {
+  sections?: TocEntry[];
+}
+
+export default function TableOfContents({ sections = [] }: TableOfContentsProps) {
   const observer = useRef<IntersectionObserver | null>(null); 
 
   const prevRatio = useRef<number>(0.0);
@@ -25,7 +28,7 @@ export default function TableOfContents() {
     let options = {
       root: null as HTMLElement | null,
       rootMargin: "0px",
-      threshold: 1.0,
+      threshold: [0, 0.25, 0.5, 0.75, 1],
     };
     
     observer.current = new IntersectionObserver(handleIntersect, options);
@@ -56,23 +59,11 @@ export default function TableOfContents() {
     })
   }
 
-  const getIndex = (): TocEntry[] => {
-    let entries: TocEntry[] = [];
-
-    document.querySelectorAll(".scroll-anchor").forEach((element) => {
-      entries.push({ id: element.id, label: element.textContent || "" });
-    });
-
-    return entries;
-  }
-
   useEffect(() => {
-    const entries = getIndex();
-    setSections(entries);
-    createrInsertionObserver(entries);
+    createrInsertionObserver(sections);
 
     return () => observer.current?.disconnect();
-  }, []);
+  }, [sections]);
 
   return (
     <nav 

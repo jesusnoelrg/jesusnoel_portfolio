@@ -13,8 +13,9 @@ import IconDynamic from './IconDynamic.astro';
      hover:bg-zinc-100 dark:hover:bg-zinc-900
      transition-all duration-300
     ">
-    <h1 class="text-md lg:text-xl xl:text-2xl font-bold flex items-center justify-center gap-2">
-        <IconDynamic name={icon} className="w-4 h-4" /> {name}
-    </h1>
-    <p>{description}</p>
+    <div class="flex flex-col items-start justify-start gap-2">
+        <IconDynamic name={icon} className="w-12 h-12 bg-zinc-200 dark:bg-zinc-800 rounded-full p-2 text-zinc-800 dark:text-zinc-200" />
+        <h1 class="text-md lg:text-md xl:text-lg font-bold">{name}</h1>
+    </div>
+    <p class="text-sm lg:text-sm xl:text-base text-zinc-700 dark:text-zinc-300">{description}</p>
   </div>

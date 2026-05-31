@@ -1,14 +1,28 @@
 ---
 import GitHub from "../../assets/icons/github.svg";
-import {LaptopMinimal} from "@lucide/astro";
+import GitLab from "../../assets/icons/gitlab.svg";
+import Bitbucket from "../../assets/icons/bitbucket.svg";
+import Codeberg from "../../assets/icons/codeberg.svg";
+import Gitea from "../../assets/icons/gitea.svg";
+
+import {LaptopMinimal, Code} from "@lucide/astro";
 
 const { links } = Astro.props;
 
+const MapIcon: Record<string, any> = {
+  "GitHub": GitHub,
+  "GitLab": GitLab,
+  "Bitbucket": Bitbucket,
+  "Codeberg": Codeberg,
+  "Gitea": Gitea
+}
+
+
 const networks = [
   {
-    name: "GitHub",
-    icon: GitHub,
-    href: links?.repository
+    name: links?.repository?.platform,
+    icon: MapIcon[links?.repository?.platform as keyof typeof MapIcon] || Code,
+    href: links?.repository?.link
   },
   {
     name: "Demo",
