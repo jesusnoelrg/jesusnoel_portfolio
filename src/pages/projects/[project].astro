@@ -4,6 +4,7 @@ import Nav from '@components/layout/Nav.astro';
 
 import ProjectDetail from '@components/layout/ProjectDetail.astro';
 import projects from '../../data/projects.json';
+import Footer from '@components/layout/Footer.astro';
 
 import '../../styles/global.css';
 
@@ -14,11 +15,11 @@ export function getStaticPaths() {
   }))
 }
 
-// Accedes al parámetro de la URL
 const { project } = Astro.props;
 ---
 
 <Layout>
   <Nav />
   <ProjectDetail project={project} />
+  <Footer />
 </Layout>

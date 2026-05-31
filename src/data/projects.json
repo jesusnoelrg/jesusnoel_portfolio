@@ -4,8 +4,8 @@
     "title": "SIAH",
     "metadata": {
       "created_at": "2026",
-      "client": "Proyecto escolar",
-      "roles": "Analista de Datos, Diseñador de Interfaces",
+      "client": "Universidad Estatal de Sonora",
+      "roles": "Backend Developer, Data Engineer, UI Designer",
       "summary": "Modelo predictivo y plataforma de datos diseñada para correlacionar variables hidroclimatológicas con el impacto en el empleo agrícola del estado de Sonora.",
       "featured": true
     },
@@ -13,21 +13,50 @@
       "banner": "../src/assets/projects/siah/siah.jpg"
     },
     "links": {
-      "repository": "https://github.com/jesusnoel/siah",
+      "repository": {"link": "https://github.com/jesusnoel/siah", "platform": "GitHub"},
       "demo": ""
     },
     "tech_stack": [ "Flutter", "Python", "FastAPI", "PostgreSQL", "Docker" ],
     "content": {
-      "description": "Modelo predictivo y plataforma de datos diseñada para correlacionar variables hidroclimatológicas con el impacto en el empleo agrícola del estado de Sonora.",
+      "description": "SIAH es una plataforma de análisis avanzado orientada al sector agrícola de Sonora. Centraliza datos climatológicos históricos y registros de empleo para entrenar un modelo predictivo capaz de anticipar fluctuaciones laborales en las zonas de riego basadas en la severidad de las sequías.",
       "features": [
-        { "name": "Feature 1", "icon": "Zap", "description": "Descripción de la feature 1" },
-        { "name": "Feature 2", "icon": "ChartLine", "description": "Descripción de la feature 2" },
-        { "name": "Feature 3", "icon": "StickyNote", "description": "Descripción de la feature 3" }
+        { 
+          "name": "Ingesta de Datos Climáticos", 
+          "icon": "CloudRain", 
+          "description": "Procesamiento automatizado de variables hidroclimatológicas críticas como precipitación, niveles de presas y estrés hídrico por municipio." 
+        },
+        { 
+          "name": "Modelado Predictivo con Python", 
+          "icon": "BrainCircuit", 
+          "description": "Algoritmo de correlación lineal y regresión diseñado para proyectar la pérdida o ganancia de empleos jornaleros según escenarios de sequía." 
+        },
+        { 
+          "name": "Simulación de Escenarios", 
+          "icon": "Sliders", 
+          "description": "Panel interactivo que permite modular variables de temperatura y escasez hídrica para visualizar impactos económicos preventivos." 
+        },
+        { 
+          "name": "Monitoreo de Vacantes", 
+          "icon": "Briefcase", 
+          "description": "Módulo de seguimiento en tiempo real para la oferta de empleo activa y mitigación de vacantes afectadas en las regiones vulnerables." 
+        }
       ],
       "challenges": [
-        { "name": "Challenge 1", "description": "Descripción del challenge 1", "solution": "Solución del challenge 1" },
-        { "name": "Challenge 2", "description": "Descripción del challenge 2", "solution": "Solución del challenge 2" },
-        { "name": "Challenge 3", "description": "Descripción del challenge 3", "solution": "Solución del challenge 3" }
+        { 
+          "name": "Normalización de fuentes heterogéneas", 
+          "description": "Los registros climáticos y las métricas de empleo venían en formatos completamente distintos, con desfases temporales y datos nulos.", 
+          "solution": "Se diseñó un pipeline de limpieza en Python usando Pandas para estandarizar las fechas, imputar valores faltantes por vecindad geográfica y unificar la base de datos en PostgreSQL." 
+        },
+        { 
+          "name": "Latencia en cálculos masivos de correlación", 
+          "description": "Ejecutar las matrices de correlación en tiempo real de múltiples municipios colapsaba la memoria del servidor de la API.", 
+          "solution": "Se migraron las operaciones pesadas de análisis a consultas indexadas nativas en PostgreSQL y se implementó un sistema de respuestas cacheadas en FastAPI." 
+        },
+        { 
+          "name": "Consistencia de interfaz multiplataforma", 
+          "description": "Hacer que las gráficas complejas de correlación y mapas mantuvieran un rendimiento fluido tanto en web como en móviles.", 
+          "solution": "Se utilizó Flutter estructurando la renderización mediante micro-componentes optimizados y desacoplados del hilo principal de procesamiento." 
+        }
       ]
     },
     "gallery": {
