@@ -34,7 +34,7 @@ const networks = [
 
 <div class="sticky top-90 right-0 w-full flex items-center justify-center gap-4 p-2">
   {networks
-    .filter(({href}) => href !== null && href !== '')
+    .filter(({href}) => href !== null && href !== '' && href !== undefined)
     .map(({name, icon: Icon, href}) => (
     
     <a href={href} target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center gap-2 hover:scale-110 transition-all duration-300">

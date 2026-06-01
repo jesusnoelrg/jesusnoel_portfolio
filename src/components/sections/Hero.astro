@@ -6,6 +6,9 @@ import Github from '@assets/icons/github.svg';
 import LinkedIn from '@assets/icons/linkedin.svg';
 import { Mail } from '@lucide/Astro';
 
+import social from '../../data/social.json' assert { type: "json" };
+
+
 ---
 <section class="
         relative 
@@ -49,7 +52,7 @@ import { Mail } from '@lucide/Astro';
     <nav aria-label="redes-sociales" class="mt-10">
       <ul class="flex gap-8">
         <li>
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer"
+          <a href={social.github} target="_blank" rel="noopener noreferrer"
             class="
             flex items-center justify-center p-3
             border border-zinc-300 dark:border-zinc-800 rounded-xl
@@ -62,7 +65,7 @@ import { Mail } from '@lucide/Astro';
           </a>
         </li>
         <li>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
+          <a href={social.linkedin} target="_blank" rel="noopener noreferrer"
             class="
               flex items-center justify-center p-3
               border border-zinc-300 dark:border-zinc-800 rounded-xl
@@ -75,7 +78,7 @@ import { Mail } from '@lucide/Astro';
           </a>
         </li>
         <li>
-          <a href="mailto:jesusnoelrg.dev@gmail.com"
+          <a href={`mailto:${social.email}`} target="_blank" rel="noopener noreferrer"
             class="
               flex items-center justify-center p-3
               border border-zinc-300 dark:border-zinc-800 rounded-xl
