@@ -1,6 +1,8 @@
 ---
 import { Sun, Moon, House, UserPen, Folder, MailOpen } from '@lucide/astro';
 import Logo from '@assets/logo.svg';
+
+const currentLocation = Astro.url.pathname; // /, /about, /projects, /contact
 ---
 
 <script>
@@ -113,10 +115,10 @@ import Logo from '@assets/logo.svg';
       <Logo class="w-5 h-5 sm:w-10 sm:h-10 text-black dark:text-white" />
     </a>
     <ul class="hidden sm:flex gap-8 align-items-center">
-      <li class="nav-link"><a href="#home">Inicio</a></li>
-      <li class="nav-link"><a href="#about">Sobre mí</a></li>
-      <li class="nav-link"><a href="#projects">Proyectos</a></li>
-      <li class="nav-link"><a href="#contact">Contacto</a></li>
+      <li class="nav-link"><a href={currentLocation === "/" ? "#home" : "/#home"}>Inicio</a></li>
+      <li class="nav-link"><a href={currentLocation === "/" ? "#about" : "/#about"}>Sobre mí</a></li>
+      <li class="nav-link"><a href={currentLocation === "/" ? "#projects" : "/#projects"}>Proyectos</a></li>
+      <li class="nav-link"><a href={currentLocation === "/" ? "#contact" : "/#contact"}>Contacto</a></li>
     </ul>
     <div class="p-1 sm:p-3">
       <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-900">

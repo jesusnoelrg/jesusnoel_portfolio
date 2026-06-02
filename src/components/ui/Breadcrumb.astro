@@ -3,6 +3,7 @@ import { ChevronRight } from "lucide-react";
 
 const pathname = Astro.url.pathname;
 
+
 const normalizePath = (text: string) => {
   if(!text) return "";
 
@@ -40,7 +41,7 @@ const listPath = segments.map(t => normalizePath(t == "projects" ? "Proyectos" :
             class={`
               ${index == listPath.length - 1 ? "pointer-events-none text-black dark:text-white" : ""}
               hover:text-zinc-400 dark:hover:text-zinc-400 transition-colors duration-300 `}
-            href={currentPath}
+            href={currentPath == "/projects" ? "/#projects" : currentPath}
           >
             {element}
           </a>

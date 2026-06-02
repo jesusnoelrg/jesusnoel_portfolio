@@ -130,5 +130,163 @@
       ],
       "videos": []
     }
+  },
+  {
+    "slug": "justicia",
+    "title": "JusticIA",
+    "metadata": {
+      "created_at": "2025",
+      "client": "Yo mismo",
+      "roles": "Full Stack Developer, UI/UX Designer",
+      "summary": "Es un MVP de una plataforma enfocada hacía los profesionales de derecho para que puedan analizar documentos y obtener información relevante para sus casos."
+    },
+    "assets": {
+      "banner": "../src/assets/projects/justicia/banner.jpg",
+      "present": "../src/assets/projects/justicia/present.png"
+    },
+    "links": {
+      "repository": {},
+      "demo": ""
+    },
+    "tech_stack": [ "React", "Next.js", "TailwindCSS", "TypeScript", "Clerk" ],
+    "content": {
+      "description": "MVP de una plataforma de software orientada a profesionales del derecho para automatizar el análisis de documentos legales complejos (contratos, demandas, escritos). El sistema utiliza Inteligencia Artificial para extraer hallazgos clave, estructurar resúmenes ejecutivos y habilitar un entorno de interacción dinámica con los expedientes.",
+      "features": [
+        { 
+          "name": "Autenticación de usuarios", 
+          "icon": "User", 
+          "description": "Autenticación de usuarios con Clerk para que puedan acceder a la plataforma y guardar sus documentos." 
+        },
+        { 
+          "name": "Análisis de documentos", 
+            "icon": "FileText", 
+            "description": "Análisis de documentos con la ayuda de la Inteligencia Artificial para obtener hallazgos claves para sus casos." 
+        },
+        {
+          "name": "Panel deslizante", 
+          "icon": "PanelLeft", 
+          "description": "Panel deslizante para que puedan ver los documentos analizados y obtener información relevante para sus casos." 
+        }
+      ],
+      "challenges": [
+        { 
+          "name": "Persistencia de datos sin costos de servidor", 
+          "description": "Al tratarse de una validación rápida de mercado (MVP), se diseñó una arquitectura sin base de datos centralizada.", 
+          "solution": "Se implementó Local Storage para almacenar datos de forma local en el navegador, eliminando la necesidad de una infraestructura de servidor para persistencia." 
+        },
+        {
+          "name": "Complejidad en el análisis de documentos", 
+          "description": "La Inteligencia Artificial no arrojaba una respuesta y no se obtenía información relevante para el caso.", 
+          "solution": "Se le dio mas tiempo para que la IA pueda analizar el documento y obtener la información correcta." 
+        },
+        {
+          "name": "Diseño de interfaz compleja", 
+          "description": "Al tener una alta densidad de información (vista de archivos, chat interactivo y panel de hallazgos simultáneos), hallazgos claves y el chat, no se sabía como navegar entre ellas.", 
+          "solution": "Se implemento un sistema de navegación entre las secciones para que el usuario pueda navegar entre ellas de manera sencilla y clara. Además de tener un panel deslizante para que el usuario pueda ajustar el tamaño de las secciones." 
+        }
+      ]
+    },
+    "gallery": {
+      "images": [
+        "../src/assets/projects/justicia/img/dashboard.png",
+        "../src/assets/projects/justicia/img/vista_caso_1.png",
+        "../src/assets/projects/justicia/img/crear_caso.png",
+        "../src/assets/projects/justicia/img/eliminar_caso.png"
+      ],
+      "videos": []
+    }
+  },
+  {
+    "slug": "electro-inventario",
+    "title": "Electro Inventario",
+    "metadata": {
+      "created_at": "2026",
+      "client": "Ayuntamiento de Navojoa",
+      "roles": "Backend Developer",
+      "summary": "Es un sistema de inventario para el Ayuntamiento de Navojoa para que puedan gestionar sus artículos, prestamos y reportes de inventario."
+    },
+    "assets": {
+      "banner": "../src/assets/projects/electro_inventario/banner.png",
+      "present": "../src/assets/projects/electro_inventario/present.png"
+    },
+    "links": {
+      "repository": {},
+      "demo": ""
+    },
+    "tech_stack": [ "React", "Next.js", "TailwindCSS", "TypeScript", "Prisma", "SQLite", "JWT" ],
+    "content": {
+      "description": "Sistema de inventario orientado a la gestión de artículos electrónicos, prestamos y reportes de inventario. Incluye un panel de control para la gestión de usuarios, empleados y categorías, alertas de stock bajo y alertas de prestamos vencidos. Además de contar con un módulo de busqueda de artículos en Internet para obtener mejores precios y disponibilidad de los mismos.",
+      "features": [
+        { 
+          "name": "Autenticación de usuarios", 
+          "icon": "User", 
+          "description": "Autenticación de usuarios con encriptación de contraseñas para que puedan acceder a la plataforma, JWT Token para que puedan acceder a las rutas protegidas y permite a los usuarios autenticarse una sola vez." 
+        },
+        {
+          "name": "Alertas de stock bajo", 
+          "icon": "AlertCircle", 
+          "description": "Alertas de stock bajo para el administrador/operador para que pueda saber cuando un articulo tiene un stock bajo." 
+        },
+        {
+          "name": "Control de prestamos", 
+          "icon": "Handshake", 
+          "description": "Control de prestamos para gestionar los prestamos hechos por los usuarios y que puedan ser devueltos o vencidos." 
+        },
+        {
+          "name": "Busqueda de artículos en Internet", 
+          "icon": "Search", 
+          "description": "Busqueda de artículos en Internet para obtener mejores precios y disponibilidad de los mismos." 
+        },
+        {
+          "name": "Reportes de inventario", 
+          "icon": "FileText", 
+          "description": "Reportes de inventario para que puedan ser descargados en formato PDF y ser impresos para un mejor control de los inventarios." 
+        },
+        {
+          "name": "Historial de movimientos", 
+          "icon": "History", 
+          "description": "Historial de movimientos para que puedan ser consultados y se pueda tener contexto de los movimientos hechos en la plataforma y así evitar duplicados o errores en el inventario." 
+        }
+      ],
+      "challenges": [
+        { 
+          "name": "Optimización de la sesión", 
+          "description": "Las reconexiones continuas por expiración de sesión degradaban la experiencia de usuario", 
+          "solution": "Se estructuró una arquitectura de autenticación basada en JWT que mantiene sesiones activas y seguras." 
+        },
+        {
+          "name": "Transacción atómica", 
+          "description": "Si el servidor falla a la mitad del proceso, se crea el préstamo pero el stock nunca baja, dejando la plataforma en un estado inconsistente.", 
+          "solution": "Se implementaron transacciones atómicas mediante Prisma ORM ($transaction), garantizando que las mutaciones lógicas en el stock y los registros de préstamo se ejecuten de manera conjunta o se reviertan ante cualquier fallo de conexión." 
+        },
+        {
+          "name": "Problema para generar PDF", 
+          "description": "Dificultad para renderizar e indexar tablas complejas con datos de préstamos y devoluciones en documentos PDF exportables.", 
+          "solution": "Se integró la librería jsPDF en el cliente para generar los PDF con los datos del prestamo o devolución de manera correcta y eficiente." 
+        },
+        {
+          "name": "Rendimiento en la busqueda de artículos", 
+          "description": "El scraper para obtener los datos de los artículos en Internet era complicado y lento en terminos de tiempo de respuesta.", 
+          "solution": "Se migró la lógica de scraper a Serper Dev API para obtener los datos de los artículos en Internet de manera mas rapida y eficiente. Entregando resultados en segundos en lugar de minutos." 
+        }
+      ]
+    },
+    "gallery": {
+      "images": [
+        "../src/assets/projects/electro_inventario/img/login.png",
+        "../src/assets/projects/electro_inventario/img/panel_control.png",
+        "../src/assets/projects/electro_inventario/img/inventario.png",
+        "../src/assets/projects/electro_inventario/img/nuevo_articulo.png",
+        "../src/assets/projects/electro_inventario/img/prestamos.png",
+        "../src/assets/projects/electro_inventario/img/nuevo_prestamo.png",
+        "../src/assets/projects/electro_inventario/img/historial_movimientos.png",
+        "../src/assets/projects/electro_inventario/img/reportes.png",
+        "../src/assets/projects/electro_inventario/img/vista_reporte.png",
+        "../src/assets/projects/electro_inventario/img/usuarios.png",
+        "../src/assets/projects/electro_inventario/img/categorias.png",
+        "../src/assets/projects/electro_inventario/img/empleados.png"
+      ],
+      "videos": []
+    }
   }
 ]
