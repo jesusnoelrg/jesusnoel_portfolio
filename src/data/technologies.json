@@ -14,5 +14,8 @@
   { "name": "Sass", "url_img": "../src/assets/icons/sass.svg" },
   { "name": "Node.js", "url_img": "../src/assets/icons/nodejs.svg" },
   { "name": "Express", "url_img": "../src/assets/icons/express.svg" },
-  { "name": "Clerk", "url_img": "../src/assets/icons/clerk-icon-light.svg" }
+  { "name": "Clerk", "url_img": "../src/assets/icons/clerk-icon-light.svg" },
+  { "name": "JWT", "url_img": "../src/assets/icons/jwt.svg" },
+  { "name": "SQLite", "url_img": "../src/assets/icons/sqlite.svg" },
+  { "name": "Prisma", "url_img": "../src/assets/icons/prisma.svg" }
 ]
