@@ -2,7 +2,8 @@
 import { Sun, Moon, House, UserPen, Folder, MailOpen } from '@lucide/astro';
 import Logo from '@assets/logo.svg';
 
-const currentLocation = Astro.url.pathname; // /, /about, /projects, /contact
+const currentLocation = Astro.url.pathname;
+const isHome = currentLocation === "/";
 ---
 
 <script>
@@ -14,7 +15,6 @@ const currentLocation = Astro.url.pathname; // /, /about, /projects, /contact
       const isDark = document.documentElement.classList.toggle("dark");
       localStorage.theme = isDark ? "dark" : "light";
 
-      // Ejecutar animación de rotación
       btnTheme.classList.add("theme-toggle");
       setTimeout(() => {
         btnTheme.classList.remove("theme-toggle");
@@ -22,10 +22,124 @@ const currentLocation = Astro.url.pathname; // /, /about, /projects, /contact
     });
   };
 
+  const setupNavScroll = () => {
+    const header = document.querySelector("#site-header");
+    if (!header) return;
+
+    const update = () => {
+      header.classList.toggle("is-scrolled", window.scrollY > 48);
+    };
+
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+  };
+
   setupThemeToggle();
+  setupNavScroll();
 </script>
 
 <style>
+  .site-header {
+    transition:
+      padding 0.35s ease,
+      margin 0.35s ease;
+  }
+
+  .site-header.is-home {
+    padding-top: 1rem;
+    padding-inline: 1.25rem;
+  }
+
+  .site-header.is-home.is-scrolled {
+    padding-top: 0.625rem;
+    padding-inline: 2.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .site-header.is-home {
+      padding-inline: 4rem;
+    }
+
+    .site-header.is-home.is-scrolled {
+      padding-inline: 7rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .site-header.is-home {
+      padding-inline: 8rem;
+    }
+
+    .site-header.is-home.is-scrolled {
+      padding-inline: 12rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .site-header.is-home.is-scrolled {
+      padding-inline: 16rem;
+    }
+  }
+
+  .site-header:not(.is-home) {
+    margin-inline: 1.25rem;
+    padding-block: 1.25rem;
+  }
+
+  .site-header:not(.is-home).is-scrolled {
+    margin-inline: 2.5rem;
+    padding-block: 0.75rem;
+  }
+
+  @media (min-width: 768px) {
+    .site-header:not(.is-home) {
+      margin-inline: 5rem;
+    }
+
+    .site-header:not(.is-home).is-scrolled {
+      margin-inline: 7rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .site-header:not(.is-home) {
+      margin-inline: 10rem;
+    }
+
+    .site-header:not(.is-home).is-scrolled {
+      margin-inline: 14rem;
+    }
+  }
+
+  .site-nav {
+    transition: padding 0.35s ease;
+  }
+
+  .site-header.is-scrolled .site-nav {
+    padding-block: 0.25rem;
+  }
+
+  .site-logo {
+    transition: width 0.35s ease, height 0.35s ease;
+  }
+
+  .site-header.is-scrolled .site-logo {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .site-logo {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+
+    .site-header.is-scrolled .site-logo {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+
   .nav-link-mobile {
     display: flex;
     align-items: center;
@@ -70,16 +184,19 @@ const currentLocation = Astro.url.pathname; // /, /about, /projects, /contact
 
 <div id="home"></div>
 <header 
-  class="
-    sticky 
-    top-0 left-0  
-    mx-5 md:mx-20 lg:mx-40 py-5 sm:py-10
-    transition-all duration-300
-    z-100
-    text-black dark:text-white">
-  <nav class="flex justify-between align-items-center border border-zinc-300 dark:border-zinc-600 backdrop-blur-sm dark:bg-zinc-950/30 bg-zinc-50/30 rounded-2xl">
+  id="site-header"
+  class:list={[
+    "site-header left-0 right-0 z-100 text-black dark:text-white",
+    isHome ? "is-home fixed top-0" : "sticky top-0"
+  ]}>
+  <nav class:list={[
+    "site-nav flex justify-between align-items-center rounded-2xl border backdrop-blur-md",
+    isHome
+      ? "border-white/15 dark:border-white/10 bg-white/50 dark:bg-black/25"
+      : "border-zinc-300 dark:border-zinc-600 bg-zinc-50/70 dark:bg-zinc-950/40"
+  ]}>
     <a class="flex items-center mx-4" href="/">
-      <Logo class="w-5 h-5 sm:w-10 sm:h-10 text-black dark:text-white" />
+      <Logo class="site-logo w-5 h-5 sm:w-10 sm:h-10 text-black dark:text-white" />
     </a>
     <ul class="hidden sm:flex gap-8 align-items-center">
       <li class="nav-link"><a href={currentLocation === "/" ? "#home" : "/#home"}>Inicio</a></li>
