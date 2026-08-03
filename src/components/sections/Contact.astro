@@ -21,7 +21,7 @@ const networks = [
 ]
 ---
 
-<section id="contact" class="relative overflow-hidden flex justify-center items-center mt-25 bg-zinc-100 dark:bg-zinc-950 text-black dark:text-white">
+<section id="contact" class="contact-section relative overflow-hidden flex justify-center items-center w-full mt-25 text-black dark:text-white">
   <div class="flex flex-col lg:flex-row justify-evenly items-center container pt-10 pb-10">
     <div class="text-center lg:text-start lg:w-1/2 px-10 pt-10">
       <TextShimmer text="CONTACTO" color1="#391d43" color2="#7d6187" color3="#391d43"
@@ -54,3 +54,13 @@ const networks = [
     <ContactForm client:load />
   </div>
 </section>
+
+<style>
+  .contact-section {
+    background-color: #f4f4f5;
+  }
+
+  :global(html.dark) .contact-section {
+    background-color: #18181b;
+  }
+</style>

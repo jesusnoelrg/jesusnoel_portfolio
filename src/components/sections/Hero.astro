@@ -1,5 +1,4 @@
 ---
-import SoftAurora from '@components/effects/SoftAurora.tsx';
 import TextShimmer from '@components/effects/TextShimmer.astro';
 
 import Github from '@assets/icons/github.svg';
@@ -10,32 +9,8 @@ import social from '../../data/social.json' with { type: "json" };
 
 
 ---
-<section class="
-        relative overflow-hidden
-        flex flex-col justify-center items-center
-        my-40
-        z-20
-        text-black dark:text-white">
-
-  <SoftAurora
-
-      client:only="react"
-
-      speed={0.6}
-      scale={1}
-      brightness={1}
-      color1="#391d43"
-      color2="#340481"
-      noiseFrequency={2.5}
-      noiseAmplitude={4}
-      bandHeight={0.5}
-      bandSpread={1}
-      octaveDecay={0.1}
-      layerOffset={0}
-      colorSpeed={1}
-      enableMouseInteraction
-      mouseInfluence={0}
-    />
+<section class="hero-section relative overflow-hidden flex flex-col justify-center items-center min-h-[70vh] py-20 md:py-32 z-20 text-black dark:text-white">
+  <div class="hero-aurora" aria-hidden="true"></div>
 
   <div class="flex flex-col items-center justify-center container relative z-10">
     <div class="text-center gap-5">
@@ -94,3 +69,33 @@ import social from '../../data/social.json' with { type: "json" };
     </nav>
   </div>
 </section>
+
+<style>
+  .hero-aurora {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 90% 55% at 50% -10%, rgba(57, 29, 67, 0.55) 0%, transparent 72%),
+      radial-gradient(ellipse 65% 45% at 75% 15%, rgba(52, 4, 129, 0.4) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 35% at 20% 25%, rgba(125, 97, 135, 0.2) 0%, transparent 60%);
+  }
+
+  @keyframes aurora-drift {
+    0%, 100% {
+      opacity: 0.85;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.03);
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-aurora {
+      animation: aurora-drift 10s ease-in-out infinite;
+    }
+  }
+</style>
