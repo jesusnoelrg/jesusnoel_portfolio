@@ -113,7 +113,7 @@ const sections = [
       </section>
       <div class="hidden lg:flex w-full lg:w-1/4 flex-col items-start justify-start gap-5">
         <TableOfContents client:only="react" sections={sections} />
-        <ProjectLinks links={project?.links ?? []} />
+        <ProjectLinks links={project?.links || {repository: [], demo: ""}} />
       </div>
     </div>
   </div>

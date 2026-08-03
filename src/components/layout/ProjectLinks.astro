@@ -5,41 +5,48 @@ import Bitbucket from "../../assets/icons/bitbucket.svg";
 import Codeberg from "../../assets/icons/codeberg.svg";
 import Gitea from "../../assets/icons/gitea.svg";
 
-import {LaptopMinimal, Code} from "@lucide/astro";
+import { Code } from "@lucide/astro";
 
-const { links } = Astro.props;
+interface Props {
+  links?: {
+    repository?: Array<{
+      platform: string;
+      link: string;
+    }>;
+    demo?: string;
+  };
+}
+
+interface Repository {
+  platform: string;
+  link: string;
+}
+
+const { links }: Props = Astro.props;
 
 const MapIcon: Record<string, any> = {
   "GitHub": GitHub,
-  "GitLab": GitLab,
+  "GitLab": GitLab, 
   "Bitbucket": Bitbucket,
   "Codeberg": Codeberg,
   "Gitea": Gitea
 }
 
-
-const networks = [
-  {
-    name: links?.repository?.platform,
-    icon: MapIcon[links?.repository?.platform as keyof typeof MapIcon] || Code,
-    href: links?.repository?.link
-  },
-  {
-    name: "Demo",
-    icon: LaptopMinimal,
-    href: links?.demo
+const repositoryList: Array<Repository> = Array.isArray(links?.repository) ? links?.repository : [];
+const repositories = repositoryList.map(({platform, link}: Repository) => {
+  return {
+    platform: platform,
+    icon: MapIcon[platform as keyof typeof MapIcon] || Code,
+    link: link
   }
-]
+})
 ---
 
 <div class="sticky top-90 right-0 w-full flex items-center justify-center gap-4 p-2">
-  {networks
-    .filter(({href}) => href !== null && href !== '' && href !== undefined)
-    .map(({name, icon: Icon, href}) => (
-    
-    <a href={href} target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center gap-2 hover:scale-110 transition-all duration-300">
+  {repositories.map(({platform, icon: Icon, link}: {platform: string, icon: any, link: string}, index: number) => (
+    <a href={link} target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center gap-2 hover:scale-110 transition-all duration-300">
       <Icon class="w-8 h-8 text-black dark:text-white" />
-      <span class="text-sm text-black dark:text-white">{name}</span>
+      <span class="text-sm text-black dark:text-white">{platform}</span>
     </a>
   ))}
 </div> 

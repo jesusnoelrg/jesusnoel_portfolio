@@ -1,6 +1,6 @@
 ---
 import TextShimmer from "@components/effects/TextShimmer.astro";
-import GlareHover from "../../component/GlareHover";
+import GlareHover from "@components/effects/GlareHover.tsx";
 
 const frontend = {
   category: "Frontend Web",
@@ -17,46 +17,46 @@ const frontend = {
 };
 
 const backend = {
-    category: "Backend",
-    items: [
-      { url_img: "../../src/assets/icons/nodejs.svg", text: "Node.js" },
-      { url_img: "../../src/assets/icons/expressjs.svg", text: "Express", invert: true },
-      { url_img: "../../src/assets/icons/fastapi.svg", text: "FastAPI" },
-      { url_img: "../../src/assets/icons/typescript.svg", text: "TypeScript" },
-      { url_img: "../../src/assets/icons/python.svg", text: "Python" },
-      { url_img: "../../src/assets/icons/java.svg", text: "Java" },
-    ]
-  };
+  category: "Backend",
+  items: [
+    { url_img: "../../src/assets/icons/expressjs.svg", text: "Express", invert: true },
+    { url_img: "../../src/assets/icons/fastapi.svg", text: "FastAPI" },
+    { url_img: "../../src/assets/icons/typescript.svg", text: "TypeScript" },
+    { url_img: "../../src/assets/icons/python.svg", text: "Python" },
+    { url_img: "../../src/assets/icons/redis.svg", text: "Redis"}
+  ]
+};
 
 const databases = {
-    category: "Bases de datos y ORMs",
-    items: [
-      { url_img: "../../src/assets/icons/mysql.svg", text: "MySQL", invert: false },
-      { url_img: "../../src/assets/icons/postgresql.svg", text: "PostgreSQL" },
-      { url_img: "../../src/assets/icons/sqlite.svg", text: "SQLite" },
-      { url_img: "../../src/assets/icons/prisma.svg", text: "Prisma" },
-    ]
-  };
+  category: "Bases de datos",
+  items: [
+    { url_img: "../../src/assets/icons/mysql.svg", text: "MySQL", invert: false },
+    { url_img: "../../src/assets/icons/postgresql.svg", text: "PostgreSQL" },
+    { url_img: "../../src/assets/icons/sqlserver.svg", text: "SQLServer"},
+    { url_img: "../../src/assets/icons/sqlite.svg", text: "SQLite" },
+  ]
+};
 
 const tools = {
-    category: "Herramientas",
-    items: [
-      { url_img: "../../src/assets/icons/docker.svg", text: "Docker" },
-      { url_img: "../../src/assets/icons/vercel.svg", text: "Vercel", invert: true },
-      { url_img: "../../src/assets/icons/render.svg", text: "Render", invert: true },
-      { url_img: "../../src/assets/icons/github.svg", text: "GitHub", invert: true },
-    ]
-  };
+  category: "Herramientas",
+  items: [
+    { url_img: "../../src/assets/icons/docker.svg", text: "Docker" },
+    { url_img: "../../src/assets/icons/vercel.svg", text: "Vercel", invert: true },
+    { url_img: "../../src/assets/icons/render.svg", text: "Render", invert: true },
+    { url_img: "../../src/assets/icons/github.svg", text: "GitHub", invert: true },
+    { url_img: "../../src/assets/icons/git.svg", text: "Git" },
+  ]
+};
 
-const mobile = {
-    category: "Desarrollo móvil",
-    items: [
-      { url_img: "../../src/assets/icons/flutter.svg", text: "Flutter", invert: false },
-      { url_img: "../../src/assets/icons/kotlin.svg", text: "Kotlin" },
-      { url_img: "../../src/assets/icons/dart.svg", text: "Dart" },
-    ]
-  };
-
+const orm = {
+  category: "Backend Tools",
+  items: [
+    { url_img: "../../src/assets/icons/sqlalchemy.svg", text: "SQLAlchemy" },
+    { url_img: "../../src/assets/icons/prisma.svg", text: "Prisma" },
+    { url_img: "../../src/assets/icons/jwt.svg", text: "JWT" },
+    { url_img: "../../src/assets/icons/pydantic.svg", text: "Pydantic" },
+  ]
+}
 ---
 
 <section class="flex flex-col items-center justify-center pt-16 pb-0">
@@ -178,13 +178,13 @@ const mobile = {
         className="lg:col-span-2 lg:row-span-1 lg:col-start-2 lg:row-start-2 flex flex-col items-center justify-center card-style"
       >
         {
-          <h1 class="mb-5 font-bold text-xl text-black dark:text-white">{mobile.category}</h1>
+          <h1 class="mb-5 font-bold text-xl text-black dark:text-white">{orm.category}</h1>
         }
         <div class="flex flex-wrap items-center justify-start gap-8">
           {
-            mobile.items.map(item => (
+            orm.items.map(item => (
               <div class="flex flex-col items-center gap-5">
-                <img src={item.url_img} alt={item.text} class={`w-8 h-8 ${item.invert ? 'invert dark:invert-0' : ''}`} />
+                <img src={item.url_img} alt={item.text} class={`w-8 h-8`} />
                 <span class="text-sm text-zinc-700 dark:text-zinc-300">{item.text}</span>
               </div> 
             ))
