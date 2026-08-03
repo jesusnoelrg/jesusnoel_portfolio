@@ -26,39 +26,6 @@ const currentLocation = Astro.url.pathname; // /, /about, /projects, /contact
 </script>
 
 <style>
-
-  html {
-    container-type: scroll-state;
-  }
-
-  @container scroll-state(scrollable: top) {
-    header{
-      margin-left: 300px;
-      margin-right: 300px;
-    }
-
-    @media screen and (max-width: 1024px) {
-      header {
-        margin-left: 150px;
-        margin-right: 150px;
-      }
-    }
-
-    @media screen and (max-width: 800px) {
-      header {
-        margin-left: 100px;
-        margin-right: 100px;
-      }
-    }
-
-    @media screen and (max-width: 500px) {
-      header {
-        margin-left: 70px;
-        margin-right: 70px;
-      }
-    }
-  }
-
   .nav-link-mobile {
     display: flex;
     align-items: center;
@@ -131,22 +98,22 @@ const currentLocation = Astro.url.pathname; // /, /about, /projects, /contact
 <div class="fixed w-full bottom-0 z-50 border border-zinc-300 dark:border-zinc-600 backdrop-blur-sm dark:bg-zinc-950/30 bg-zinc-50/30 rounded-t-2xl">
   <ul class="flex sm:hidden justify-around align-items-center p-4 pointer-events-auto text-black dark:text-white text-[10px]">
     <li class="nav-link-mobile hover:text-purple-400/50 transition-colors duration-300">
-      <a class="flex flex-col justify-center items-center" href="#home">
+      <a class="flex flex-col justify-center items-center" href={currentLocation === "/" ? "#home" : "/#home"}>
         <House class="w-5 h-5" /> 
         Inicio</a>
     </li>
     <li class="nav-link-mobile hover:text-purple-400/50 transition-colors duration-300">
-      <a class="flex flex-col justify-center items-center" href="#about">
+      <a class="flex flex-col justify-center items-center" href={currentLocation === "/" ? "#about" : "/#about"}>
         <UserPen class="w-5 h-5" /> 
         Sobre mí</a>
     </li>
     <li class="nav-link-mobile hover:text-purple-400/50 transition-colors duration-300">
-      <a class="flex flex-col justify-center items-center" href="#projects">
+      <a class="flex flex-col justify-center items-center" href={currentLocation === "/" ? "#projects" : "/#projects"}>
         <Folder class="w-5 h-5" /> 
         Proyectos</a>
     </li>
     <li class="nav-link-mobile hover:text-purple-400/50 transition-colors duration-300">
-      <a class="flex flex-col justify-center items-center" href="#contact">
+      <a class="flex flex-col justify-center items-center" href={currentLocation === "/" ? "#contact" : "/#contact"}>
         <MailOpen class="w-5 h-5" /> 
         Contacto</a>
     </li>

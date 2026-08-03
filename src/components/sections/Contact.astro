@@ -21,8 +21,8 @@ const networks = [
 ]
 ---
 
-<section id="contact" class="relative flex justify-center items-center mt-50 bg-zinc-100 dark:bg-zinc-950 text-black dark:text-white">
-  <div class="flex flex-col lg:flex-row justify-evenly items-center container pt-10">
+<section id="contact" class="relative overflow-hidden flex justify-center items-center mt-25 bg-zinc-100 dark:bg-zinc-950 text-black dark:text-white">
+  <div class="flex flex-col lg:flex-row justify-evenly items-center container pt-10 pb-10">
     <div class="text-center lg:text-start lg:w-1/2 px-10 pt-10">
       <TextShimmer text="CONTACTO" color1="#391d43" color2="#7d6187" color3="#391d43"
         class="text-xl md:text-2xl font-bold" 
@@ -32,7 +32,7 @@ const networks = [
         Mi bandeja de entrada siempre está abierta puede contactarme por este medio o en las redes sociales 
         que dejo aquí abajo. No dude en contactarme y le responderé.
       </p>
-      <div class="flex justify-center lg:justify-start items-center mt-10 gap-5 text-white">
+      <div class="flex justify-center lg:justify-start items-center mt-10 gap-5">
         {
           networks.map(({plataform, icon: Icon, ref}) => (
             <a href={ref} target="_blank" 

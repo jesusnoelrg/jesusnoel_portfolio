@@ -96,7 +96,7 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="w-1/2 p-10 flex flex-col items-center justify-center">
+    <form onSubmit={onSubmit} className="w-full max-w-md lg:w-1/2 p-6 sm:p-10 flex flex-col items-center justify-center">
       
       <Input 
         className="w-70 sm:w-100" 

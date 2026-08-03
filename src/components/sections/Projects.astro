@@ -1,6 +1,5 @@
 ---
 import TextShimmer from '@components/effects/TextShimmer.astro';
-import SoftAurora from '@components/effects/SoftAurora.tsx';
 import Badge from '@components/ui/Badge.astro';
 import projects from '../../data/projects.json';
 import technologies from '../../data/technologies.json';
@@ -18,27 +17,8 @@ const proyectos = projects.map(project => (
 ));
 ---
 
-<section class="relative flex items-center justify-center mb-20">
-  <div id="projects" class="absolute -top-30"></div>
-  <SoftAurora
-    
-    client:only="react"
-    
-    speed={0.6}
-    scale={1}
-    brightness={0.7}
-    color1="#391d43"
-    color2="#340481"
-    noiseFrequency={2.5}
-    noiseAmplitude={8}
-    bandHeight={0.5}
-    bandSpread={1}
-    octaveDecay={0.1}
-    layerOffset={0}
-    colorSpeed={1}
-    enableMouseInteraction
-    mouseInfluence={0}
-  />
+<section class="relative flex items-center justify-center py-20 md:py-24 mb-10">
+  <div id="projects" class="absolute -top-24"></div>
   <div class="flex flex-col items-center justify-center container z-10">
     <TextShimmer 
       text="MI EXPERIENCIA" 

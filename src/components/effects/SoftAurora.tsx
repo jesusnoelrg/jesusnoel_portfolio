@@ -1,5 +1,5 @@
 import { Renderer, Program, Mesh, Triangle } from 'ogl';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface SoftAuroraProps {
   speed?: number;
@@ -16,6 +16,7 @@ interface SoftAuroraProps {
   colorSpeed?: number;
   enableMouseInteraction?: boolean;
   mouseInfluence?: number;
+  staticOnly?: boolean;
 }
 
 function hexToVec3(hex: string): [number, number, number] {
@@ -160,6 +161,18 @@ void main() {
 }
 `;
 
+function StaticAurora({ color1, color2 }: { color1: string; color2: string }) {
+  return (
+    <div
+      className="w-full h-full absolute z-1 pointer-events-none"
+      style={{
+        background: `radial-gradient(ellipse at 50% 0%, ${color1}55 0%, transparent 70%), radial-gradient(ellipse at 80% 20%, ${color2}44 0%, transparent 60%)`
+      }}
+      aria-hidden="true"
+    />
+  );
+}
+
 export default function SoftAurora({
   speed = 0.6,
   scale = 1.5,
@@ -174,22 +187,41 @@ export default function SoftAurora({
   layerOffset = 0,
   colorSpeed = 1.0,
   enableMouseInteraction = true,
-  mouseInfluence = 0.25
+  mouseInfluence = 0.25,
+  staticOnly = false
 }: SoftAuroraProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-
+  const [useStaticFallback, setUseStaticFallback] = useState(staticOnly);
 
   useEffect(() => {
+    if (staticOnly) return;
 
-    if (!containerRef.current) return;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+    if (prefersReducedMotion || isMobile) {
+      setUseStaticFallback(true);
+    }
+  }, [staticOnly]);
+
+  useEffect(() => {
+    if (useStaticFallback || !containerRef.current) return;
+
     const container = containerRef.current;
-    const renderer = new Renderer({ alpha: true, premultipliedAlpha: false });
+    const renderer = new Renderer({
+      alpha: true,
+      premultipliedAlpha: false,
+      dpr: Math.min(window.devicePixelRatio, 1.5)
+    });
     const gl = renderer.gl;
     gl.clearColor(0, 0, 0, 0);
 
     let program: Program;
     let currentMouse = [0.5, 0.5];
     let targetMouse = [0.5, 0.5];
+    let isVisible = true;
+    let lastFrameTime = 0;
+    const targetFrameMs = 1000 / 30;
 
     function handleMouseMove(e: MouseEvent) {
       const rect = gl.canvas.getBoundingClientRect();
@@ -209,6 +241,7 @@ export default function SoftAurora({
         program.uniforms.uResolution.value = [gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height];
       }
     }
+
     window.addEventListener('resize', resize);
     resize();
 
@@ -245,10 +278,24 @@ export default function SoftAurora({
       gl.canvas.addEventListener('mouseleave', handleMouseLeave);
     }
 
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+      },
+      { threshold: 0.05 }
+    );
+    observer.observe(container);
+
     let animationFrameId: number;
 
     function update(time: number) {
       animationFrameId = requestAnimationFrame(update);
+
+      if (!isVisible) return;
+
+      if (time - lastFrameTime < targetFrameMs) return;
+      lastFrameTime = time;
+
       program.uniforms.uTime.value = time * 0.001;
 
       if (enableMouseInteraction) {
@@ -267,6 +314,7 @@ export default function SoftAurora({
 
     return () => {
       cancelAnimationFrame(animationFrameId);
+      observer.disconnect();
       window.removeEventListener('resize', resize);
       if (enableMouseInteraction) {
         gl.canvas.removeEventListener('mousemove', handleMouseMove);
@@ -275,7 +323,11 @@ export default function SoftAurora({
       container.removeChild(gl.canvas);
       gl.getExtension('WEBGL_lose_context')?.loseContext();
     };
-  }, [speed, scale, brightness, color1, color2, noiseFrequency, noiseAmplitude, bandHeight, bandSpread, octaveDecay, layerOffset, colorSpeed, enableMouseInteraction, mouseInfluence]);
+  }, [useStaticFallback, speed, scale, brightness, color1, color2, noiseFrequency, noiseAmplitude, bandHeight, bandSpread, octaveDecay, layerOffset, colorSpeed, enableMouseInteraction, mouseInfluence]);
 
-  return <div ref={containerRef} className="w-full h-full absolute z-1" />;
+  if (useStaticFallback) {
+    return <StaticAurora color1={color1} color2={color2} />;
+  }
+
+  return <div ref={containerRef} className="w-full h-full absolute z-1 pointer-events-none" />;
 }

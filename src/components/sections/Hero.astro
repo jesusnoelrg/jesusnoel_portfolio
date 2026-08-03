@@ -6,12 +6,12 @@ import Github from '@assets/icons/github.svg';
 import LinkedIn from '@assets/icons/linkedin.svg';
 import { Mail } from '@lucide/astro';
 
-import social from '../../data/social.json' assert { type: "json" };
+import social from '../../data/social.json' with { type: "json" };
 
 
 ---
 <section class="
-        relative 
+        relative overflow-hidden
         flex flex-col justify-center items-center
         my-40
         z-20

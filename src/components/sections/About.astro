@@ -1,6 +1,5 @@
 ---
 import TextShimmer from '@components/effects/TextShimmer.astro';
-import SoftAurora from '@components/effects/SoftAurora.tsx';
 import { resolveAsset } from '../../utils/resolveAsset';
 
 const mi_stack = {
@@ -14,27 +13,8 @@ const mi_stack = {
 const avatarSrc = resolveAsset('../src/assets/avatar.jpg');
 ---
 
-<section class="relative flex items-center justify-center py-40 md:py-20 my-30">
-  <div id="about" class="absolute -top-30"></div>
-  <SoftAurora
-
-      client:only="react"
-
-      speed={0.6}
-      scale={1}
-      brightness={0.7}
-      color1="#391d43"
-      color2="#340481"
-      noiseFrequency={2.5}
-      noiseAmplitude={8}
-      bandHeight={0.5}
-      bandSpread={1}
-      octaveDecay={0.1}
-      layerOffset={0}
-      colorSpeed={1}
-      enableMouseInteraction
-      mouseInfluence={0}
-    />
+<section class="relative flex items-center justify-center py-20 md:py-40">
+  <div id="about" class="absolute -top-24"></div>
   <div class="container relative z-10">
     <div class="flex flex-col md:flex-row items-center justify-center">
       <div class="md:w-2/3">
