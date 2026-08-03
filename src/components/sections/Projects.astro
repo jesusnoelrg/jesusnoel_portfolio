@@ -4,13 +4,14 @@ import SoftAurora from '@components/effects/SoftAurora.tsx';
 import Badge from '@components/ui/Badge.astro';
 import projects from '../../data/projects.json';
 import technologies from '../../data/technologies.json';
+import { resolveAsset } from '../../utils/resolveAsset';
 import { ArrowRight } from 'lucide-react';
 
 const proyectos = projects.map(project => (
   {
     slug: project.slug,
     title: project.title,
-    image: project.assets.present,
+    image: resolveAsset(project.assets.present),
     description: project.content.description,
     techStack: project.tech_stack,
   }

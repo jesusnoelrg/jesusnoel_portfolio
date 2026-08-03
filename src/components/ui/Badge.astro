@@ -1,5 +1,8 @@
 ---
+import { resolveAsset } from '../../utils/resolveAsset';
+
 const { url_img, text, className } = Astro.props;
+const src = resolveAsset(url_img);
 ---
 
 <div class="
@@ -8,6 +11,6 @@ const { url_img, text, className } = Astro.props;
       border border-zinc-300 dark:border-zinc-900 rounded-2xl
       text-sm 
       text-black dark:text-white bg-zinc-50 dark:bg-zinc-900 " >
-  <img src={url_img} alt={text} class={`w-4 h-4 me-1 ${className}`} />
+  <img src={src} alt={text} class={`w-4 h-4 me-1 ${className}`} />
   {text}
 </div>

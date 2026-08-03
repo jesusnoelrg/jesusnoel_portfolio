@@ -1,9 +1,10 @@
 ---
 import ProjectMediaViewer from '@components/ui/ProjectMediaViewer.tsx';
+import { resolveAssets } from '../../utils/resolveAsset';
 
 const { images, videos } = Astro.props;
 
-const media = [...images, ...videos];
+const media = resolveAssets([...images, ...videos]);
 ---
 
 <script>
@@ -46,7 +47,7 @@ const media = [...images, ...videos];
               " data-index={index} id="miniature">
               <span class="text-sm">Clic para ver la imagen</span>
             </div>
-            {item.type === 'video' ? (
+            {item.endsWith('.mp4') || item.endsWith('.webm') ? (
               <video src={item} class="w-full h-full object-cover rounded-2xl" />
             ) : (
               <img src={item} class="w-full h-full object-cover rounded-2xl" />

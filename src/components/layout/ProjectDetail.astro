@@ -1,6 +1,7 @@
 ---
 const { project } = Astro.props;
 import technologies from '../../data/technologies.json';
+import { resolveAsset } from '../../utils/resolveAsset';
 import Breadcrumb from '@components/ui/Breadcrumb.astro';
 import Badge from '@components/ui/Badge.astro';
 import ChallgengeCard from '@components/ui/ChallgengeCard.astro';
@@ -23,7 +24,7 @@ const sections = [
     <Breadcrumb />
     <div id="project-title" data-key="project-title" class="flex flex-col lg:flex-row justify-center items-stretch gap-6 my-10 scroll-mt-50">
       <div class="w-full lg:2/3 rounded-md">
-        <img src={project?.assets?.banner} alt={project?.title} 
+        <img src={resolveAsset(project?.assets?.banner)} alt={project?.title} 
         class="rounded-2xl w-full h-full" />
       </div>
       <div 

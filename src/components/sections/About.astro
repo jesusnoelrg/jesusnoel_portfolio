@@ -1,6 +1,8 @@
 ---
 import TextShimmer from '@components/effects/TextShimmer.astro';
 import SoftAurora from '@components/effects/SoftAurora.tsx';
+import { resolveAsset } from '../../utils/resolveAsset';
+
 const mi_stack = {
   react: '../src/assets/icons/reactjs.svg',
   typescript: '../src/assets/icons/typescript.svg',
@@ -8,6 +10,8 @@ const mi_stack = {
   prisma: '../src/assets/icons/fastapi.svg',
   postgres: '../src/assets/icons/postgresql.svg'
 };
+
+const avatarSrc = resolveAsset('../src/assets/avatar.jpg');
 ---
 
 <section class="relative flex items-center justify-center py-40 md:py-20 my-30">
@@ -43,7 +47,7 @@ const mi_stack = {
         <p class="text-3xl lg:text-5xl font-bold text-zinc-800 dark:text-zinc-300 mb-5 lg:mb-10 text-center md:text-start">Sobre mí</p>
         <div class="flex flex-col p-10  bg-(--bg-card) dark:bg-(--bg-card-dark) border border-zinc-300 dark:border-zinc-900 rounded-2xl">
           <div class="flex items-center gap-5">
-            <img src="../src/assets/avatar.jpg" alt="Avatar" class="w-12 h-12 rounded-full" />
+            <img src={avatarSrc} alt="Avatar" class="w-12 h-12 rounded-full" />
             <div>
               <p class="text-black dark:text-white">Jesús Noel Rabago Gocobachi</p>
               <p class="text-sm text-gray-500 dark:text-gray-400">Desarrollador de Software | 22 años</p>
@@ -63,7 +67,7 @@ const mi_stack = {
                 p-3 rounded-2xl
               bg-(--bg-card) dark:bg-zinc-950 border border-zinc-300 dark:border-zinc-900
                 dark:hover:bg-zinc-900 hover:scale-110 transition-all duration-200">
-                <img src={value} alt={key} class="w-9 h-9  lg:w-12 lg:h-12" />
+                <img src={resolveAsset(value)} alt={key} class="w-9 h-9  lg:w-12 lg:h-12" />
               </li>
             ))}
           </ul>

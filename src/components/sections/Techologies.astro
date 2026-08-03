@@ -1,6 +1,7 @@
 ---
 import TextShimmer from "@components/effects/TextShimmer.astro";
 import GlareHover from "@components/effects/GlareHover.tsx";
+import { resolveAsset } from "../../utils/resolveAsset";
 
 const frontend = {
   category: "Frontend Web",
@@ -10,7 +11,7 @@ const frontend = {
     { url_img: "../../src/assets/icons/astro.svg", text: "Astro", invert: true },
     { url_img: "../../src/assets/icons/javascript.svg", text: "JavaScript" },
     { url_img: "../../src/assets/icons/tailwindcss.svg", text: "TailwindCSS" },
-    { url_img: "../../src/assets/icons/Bootstrap.svg", text: "Bootstrap" },
+    { url_img: "../../src/assets/icons/bootstrap.svg", text: "Bootstrap" },
     { url_img: "../../src/assets/icons/sass.svg", text: "Sass" },
 
   ]
@@ -51,7 +52,7 @@ const tools = {
 const orm = {
   category: "Backend Tools",
   items: [
-    { url_img: "../../src/assets/icons/sqlalchemy.svg", text: "SQLAlchemy" },
+    { url_img: "../../src/assets/icons/SQLAlchemy.svg", text: "SQLAlchemy" },
     { url_img: "../../src/assets/icons/prisma.svg", text: "Prisma" },
     { url_img: "../../src/assets/icons/jwt.svg", text: "JWT" },
     { url_img: "../../src/assets/icons/pydantic.svg", text: "Pydantic" },
@@ -93,7 +94,7 @@ const orm = {
             {
               frontend.items.map(item => (
                 <div class="flex flex-col items-center gap-5">
-                  <img src={item.url_img} alt={item.text} class={`w-8 h-8 md:w-12 md:h-12 lg:w-8 lg:h-8 ${item.invert ? 'invert dark:invert-0' : ''}`} />
+                  <img src={resolveAsset(item.url_img)} alt={item.text} class={`w-8 h-8 md:w-12 md:h-12 lg:w-8 lg:h-8 ${item.invert ? 'invert dark:invert-0' : ''}`} />
                   <span class="text-sm text-zinc-700 dark:text-zinc-300">{item.text}</span>
                 </div> 
               ))
@@ -123,7 +124,7 @@ const orm = {
             {
               databases.items.map(item => (
                 <div class="flex flex-col items-center gap-5">
-                  <img src={item.url_img} alt={item.text} class={`w-8 h-8 ${item.invert ? 'invert dark:invert-0' : ''}`} />
+                  <img src={resolveAsset(item.url_img)} alt={item.text} class={`w-8 h-8 ${item.invert ? 'invert dark:invert-0' : ''}`} />
                   <span class="text-sm text-zinc-700 dark:text-zinc-300">{item.text}</span>
                 </div> 
               ))
@@ -154,7 +155,7 @@ const orm = {
             {
               backend.items.map(item => (
                 <div class="flex flex-col items-center gap-5">
-                  <img src={item.url_img} alt={item.text} class={`w-8 h-8 ${item.invert ? 'invert dark:invert-0' : ''}`} />
+                  <img src={resolveAsset(item.url_img)} alt={item.text} class={`w-8 h-8 ${item.invert ? 'invert dark:invert-0' : ''}`} />
                   <span class="text-sm text-zinc-700 dark:text-zinc-300">{item.text}</span>
                 </div> 
               ))
@@ -184,7 +185,7 @@ const orm = {
           {
             orm.items.map(item => (
               <div class="flex flex-col items-center gap-5">
-                <img src={item.url_img} alt={item.text} class={`w-8 h-8`} />
+                <img src={resolveAsset(item.url_img)} alt={item.text} class={`w-8 h-8`} />
                 <span class="text-sm text-zinc-700 dark:text-zinc-300">{item.text}</span>
               </div> 
             ))
@@ -213,7 +214,7 @@ const orm = {
           {
             tools.items.map(item => (
               <div class="flex flex-col items-center gap-5 text-white">
-                <img src={item.url_img} alt={item.text} class={`w-8 h-8 ${item.invert ? 'invert dark:invert-0' : ''}`} />
+                <img src={resolveAsset(item.url_img)} alt={item.text} class={`w-8 h-8 ${item.invert ? 'invert dark:invert-0' : ''}`} />
                 <span class="text-sm text-zinc-700 dark:text-zinc-300">{item.text}</span>
               </div> 
             ))
