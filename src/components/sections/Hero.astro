@@ -4,11 +4,9 @@ import TextShimmer from '@components/effects/TextShimmer.astro';
 
 import Github from '@assets/icons/github.svg';
 import LinkedIn from '@assets/icons/linkedin.svg';
-import { Mail } from '@lucide/astro';
+import { Mail, FileDown } from '@lucide/astro';
 
 import social from '../../data/social.json' with { type: "json" };
-
-
 ---
 <section class="relative overflow-hidden flex flex-col justify-center items-center min-h-screen pt-28 pb-20 md:pt-32 md:pb-28 z-10 text-black dark:text-white">
   <SoftAurora
@@ -81,6 +79,19 @@ import social from '../../data/social.json' with { type: "json" };
               text-black dark:text-white"
           >
             <Mail class="w-8 h-8 text-black dark:text-white" />
+          </a>
+        </li>
+        <li>
+          <a href={social.cv} target="_blank" rel="noopener noreferrer"
+            class="
+              flex items-center justify-center p-3
+              border border-zinc-300 dark:border-zinc-800 rounded-xl
+              bg-zinc-100 dark:bg-zinc-950
+              transition-all duration-200
+              hover:scale-105 hover:bg-zinc-200 dark:hover:bg-zinc-900
+              text-black dark:text-white"
+          >
+            <FileDown class="w-8 h-8 text-black dark:text-white" />
           </a>
         </li>
       </ul>

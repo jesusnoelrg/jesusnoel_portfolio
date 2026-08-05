@@ -4,7 +4,7 @@ import ContactForm from "@components/ui/ContactForm.tsx"
 
 import GitHub from "@assets/icons/github.svg";
 import LinkedIn from "@assets/icons/linkedin.svg";
-import { Mail } from "@lucide/astro";
+import { Mail, FileDown } from "@lucide/astro";
 
 import social from '../../data/social.json' with { type: "json" };
 
@@ -17,6 +17,9 @@ const networks = [
   },
   {
     plataform: "Correo", icon: Mail, ref: `mailto:${social.email}`
+  },
+  {
+    plataform: "CV", icon: FileDown, ref: social.cv
   },
 ]
 ---

@@ -20,6 +20,9 @@
       ],
       "@projects/*": [
         "./src/assets/projects/*"
+      ],
+      "@public/*": [
+        "./public/*"
       ]
     },
     "jsx": "react-jsx",
