@@ -7,6 +7,21 @@ import LinkedIn from '@assets/icons/linkedin.svg';
 import { Mail, FileDown } from '@lucide/astro';
 
 import social from '../../data/social.json' with { type: "json" };
+
+const networks = [
+  {
+    plataform: "GitHub", icon: Github, ref: social.github, invert: true
+  },
+  {
+    plataform: "LinkedIn", icon: LinkedIn, ref: social.linkedin, invert: true
+  },
+  {
+    plataform: "Correo", icon: Mail, ref: `mailto:${social.email}`, invert: false
+  },
+  {
+    plataform: "CV", icon: FileDown, ref: social.cv, invert: false
+  },
+]
 ---
 <section class="relative overflow-hidden flex flex-col justify-center items-center min-h-screen pt-28 pb-20 md:pt-32 md:pb-28 z-10 text-black dark:text-white">
   <SoftAurora
@@ -42,58 +57,22 @@ import social from '../../data/social.json' with { type: "json" };
     </div>
     <nav aria-label="redes-sociales" class="mt-10">
       <ul class="flex gap-8">
-        <li>
-          <a href={social.github} target="_blank" rel="noopener noreferrer"
-            class="
-            flex items-center justify-center p-3
-            border border-zinc-300 dark:border-zinc-800 rounded-xl
-            bg-zinc-100 dark:bg-zinc-950
-            transition-all duration-200
-            hover:scale-105 hover:bg-zinc-200 dark:hover:bg-zinc-900
-            text-black dark:text-white"
-          >
-            <Github class="w-8 h-8 invert dark:invert-0" />
-          </a>
-        </li>
-        <li>
-          <a href={social.linkedin} target="_blank" rel="noopener noreferrer"
-            class="
-              flex items-center justify-center p-3
-              border border-zinc-300 dark:border-zinc-800 rounded-xl
-              bg-zinc-100 dark:bg-zinc-950
-              transition-all duration-200
-              hover:scale-105 hover:bg-zinc-200 dark:hover:bg-zinc-900
-              text-black dark:text-white"
-          >
-            <LinkedIn class="w-8 h-8 text-black dark:text-white" />
-          </a>
-        </li>
-        <li>
-          <a href={`mailto:${social.email}`} target="_blank" rel="noopener noreferrer"
-            class="
-              flex items-center justify-center p-3
-              border border-zinc-300 dark:border-zinc-800 rounded-xl
-              bg-zinc-100 dark:bg-zinc-950
-              transition-all duration-200
-              hover:scale-105 hover:bg-zinc-200 dark:hover:bg-zinc-900
-              text-black dark:text-white"
-          >
-            <Mail class="w-8 h-8 text-black dark:text-white" />
-          </a>
-        </li>
-        <li>
-          <a href={social.cv} target="_blank" rel="noopener noreferrer"
-            class="
-              flex items-center justify-center p-3
-              border border-zinc-300 dark:border-zinc-800 rounded-xl
-              bg-zinc-100 dark:bg-zinc-950
-              transition-all duration-200
-              hover:scale-105 hover:bg-zinc-200 dark:hover:bg-zinc-900
-              text-black dark:text-white"
-          >
-            <FileDown class="w-8 h-8 text-black dark:text-white" />
-          </a>
-        </li>
+        {networks.map(({plataform, icon: Icon, ref, invert}) => (
+          <li class="h-10 md:w-25">
+            <a href={ref} target="_blank" rel="noopener noreferrer"
+              class="
+                flex flex-col items-center justify-center p-3
+                border border-zinc-300 dark:border-zinc-800 rounded-xl
+                bg-zinc-100 dark:bg-zinc-950
+                transition-all duration-200
+                hover:scale-105 hover:bg-zinc-200 dark:hover:bg-zinc-900
+                text-black dark:text-white"
+            >
+              <Icon class={`w-8 h-8 ${invert ? 'invert dark:invert-0' : ''}`} />
+              <span class="mt-2 text-sm hidden md:block md:text-base text-black dark:text-white" >{plataform}</span>
+            </a>
+          </li>
+        ))}
       </ul>
     </nav>
   </div>
