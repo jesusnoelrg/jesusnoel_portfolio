@@ -10,21 +10,21 @@ import social from '../../data/social.json' with { type: "json" };
 
 const networks = [
   {
-    plataform: "GitHub", icon: GitHub, ref: social.github
+    plataform: "GitHub", icon: GitHub, ref: social.github, invert: true
   },
   {
-    plataform: "LinkedIn", icon: LinkedIn, ref: social.linkedin
+    plataform: "LinkedIn", icon: LinkedIn, ref: social.linkedin, invert: true
   },
   {
-    plataform: "Correo", icon: Mail, ref: `mailto:${social.email}`
+    plataform: "Correo", icon: Mail, ref: `mailto:${social.email}`, invert: false
   },
   {
-    plataform: "CV", icon: FileDown, ref: social.cv
+    plataform: "CV", icon: FileDown, ref: social.cv, invert: false
   },
 ]
 ---
 
-<section id="contact" class="contact-section relative overflow-hidden flex justify-center items-center w-full mt-25 text-black dark:text-white">
+<section id="contact" class="relative overflow-hidden flex justify-center items-center w-full mt-25 bg-[#f1f1f1] dark:bg-[#0e0e0e] text-black dark:text-white">
   <div class="flex flex-col lg:flex-row justify-evenly items-center container pt-10 pb-10">
     <div class="text-center lg:text-start lg:w-1/2 px-10 pt-10">
       <TextShimmer text="CONTACTO" color1="#391d43" color2="#7d6187" color3="#391d43"
@@ -37,7 +37,7 @@ const networks = [
       </p>
       <div class="flex justify-center lg:justify-start items-center mt-10 gap-5">
         {
-          networks.map(({plataform, icon: Icon, ref}) => (
+          networks.map(({plataform, icon: Icon, ref, invert}) => (
             <a href={ref} target="_blank" 
               class="
               flex flex-col items-center justify-center
@@ -47,7 +47,7 @@ const networks = [
               cursor-pointer
               transition duration-300
               ">
-              <Icon class="w-8 h-8 invert dark:invert-0" />
+              <Icon class={`w-8 h-8 ${invert ? 'invert dark:invert-0' : ''}`} />
               <span class="text-sm text-black dark:text-white" >{plataform}</span>
             </a>
           ))
@@ -57,15 +57,3 @@ const networks = [
     <ContactForm client:load />
   </div>
 </section>
-
-<style>
-  .contact-section {
-    background-color: #fafafa;
-    border-top: 1px solid #e4e4e7;
-  }
-
-  :global(html.dark) .contact-section {
-    background-color: #0e0e0e;
-    border-top: 1px solid #1a1a1a;
-  }
-</style>
