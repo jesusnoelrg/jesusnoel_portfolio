@@ -1,37 +1,26 @@
 ---
 import { Sun, Moon, House, UserPen, Folder, MailOpen } from '@lucide/astro';
 import Logo from '@assets/logo.svg';
-import logoDarkSrc from '@assets/logo.svg?url';
-import logoLightSrc from '@assets/logo_light.svg?url';
 
 const currentLocation = Astro.url.pathname;
 const isHome = currentLocation === "/";
 ---
 
-<script define:vars={{ logoDarkSrc, logoLightSrc }}>
+<script>
   const setupThemeToggle = () => {
     const btnTheme = document.querySelector("#theme-toggle");
-    if (!btnTheme || btnTheme.dataset.initialized === "true") return;
-    btnTheme.dataset.initialized = "true";
-
-    const setFavicon = (theme) => {
-      const favicon = document.querySelector("link[rel='icon']");
-      if (!favicon) return;
-
-      favicon.href = theme === "dark" ? logoDarkSrc : logoLightSrc;
-    };
+    if (!btnTheme || btnTheme.getAttribute("data-initialized") === "true") return;
+    btnTheme.setAttribute("data-initialized", "true");
 
     const getTheme = () =>
       document.documentElement.classList.contains("dark") ? "dark" : "light";
 
     const storedTheme = localStorage.getItem("theme");
-    setFavicon(storedTheme === "light" || storedTheme === "dark" ? storedTheme : getTheme());
 
     btnTheme.addEventListener("click", () => {
       const isDark = document.documentElement.classList.toggle("dark");
       const theme = isDark ? "dark" : "light";
       localStorage.setItem("theme", theme);
-      setFavicon(theme);
 
       btnTheme.classList.add("theme-toggle");
       setTimeout(() => {
@@ -42,8 +31,8 @@ const isHome = currentLocation === "/";
 
   const setupNavScroll = () => {
     const header = document.querySelector("#site-header");
-    if (!header || header.dataset.scrollInitialized === "true") return;
-    header.dataset.scrollInitialized = "true";
+    if (!header || header.getAttribute("data-scrollInitialized") === "true") return;
+    header.setAttribute("data-scrollInitialized", "true");
 
     const update = () => {
       header.classList.toggle("is-scrolled", window.scrollY > 48);
