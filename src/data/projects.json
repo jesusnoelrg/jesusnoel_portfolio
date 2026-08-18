@@ -2,6 +2,7 @@
   {
     "slug": "siah",
     "title": "SIAH",
+    "category": ["IA", "Machine Learning"],
     "metadata": {
       "created_at": "2026",
       "client": "Universidad Estatal de Sonora",
@@ -134,6 +135,7 @@
   {
     "slug": "justicia",
     "title": "JusticIA",
+    "category": ["IA", "MVP"],
     "metadata": {
       "created_at": "2025",
       "client": "Ayuntamiento",
@@ -199,6 +201,7 @@
   {
     "slug": "electro-inventario",
     "title": "Electro Inventario",
+    "category": ["Backend"],
     "metadata": {
       "created_at": "2026",
       "client": "Ayuntamiento de Navojoa",
@@ -292,6 +295,7 @@
   {
     "slug": "chilicache",
     "title": "ChiliCache",
+    "category": ["Frontend", "Backend"],
     "metadata": {
       "created_at": "2026",
       "client": "Proyecto Escolar - Open Source",
@@ -401,5 +405,126 @@
       ],
       "videos": []
     }
-  }
+  },
+  {
+    "slug": "botanica-pay",
+    "title": "Botanica Pay",
+    "category": ["Frontend", "Backend", "Integraciones"],
+    "metadata": {
+      "created_at": "2026",
+      "client": "Empresa de Comercio Electrónico y Bienestar",
+      "roles": "Full Stack Developer",
+      "summary": "Plataforma web de catálogo interactivo y checkout con enlaces de pago tokenizados e integración directa con PayPal. Diseñada para vendedores y asesores comerciales, permitiendo calcular cotizaciones en vivo, generar links de cobro temporales y monitorear el estado de pago en tiempo real con historial de órdenes."
+    },
+    "assets": {
+      "banner": "../src/assets/projects/solvierra/banner.jpg",
+      "present": "../src/assets/projects/solvierra/present.png"
+    },
+    "links": {
+      "repository": [],
+      "demo": ""
+    },
+    "tech_stack": [
+      "Astro",
+      "React",
+      "TailwindCSS",
+      "Express.js",
+      "TypeScript",
+      "Node.js"
+    ],
+    "content": {
+      "description": "La plataforma es una solución e-commerce monorepo (Astro + Express en TypeScript) desarrollada para agilizar las ventas directas y asesorías personalizadas de productos botánicos. Permite a los asesores armar selecciones desde el catálogo, ajustar cotizaciones en tiempo real y emitir enlaces de cobro tokenizados con expiración automática. El comprador realiza el pago de manera segura mediante PayPal Checkout sin alterar el monto cotizado, mientras el vendedor recibe confirmación instantánea vía polling continuo.",
+      "features": [
+        {
+          "name": "Catálogo Interactivo y Calculadora",
+          "icon": "Calculator",
+          "description": "Exploración de productos botánicos categorizados con carrito interactivo (Nanostores) para simular cotizaciones y calcular montos referenciales al instante."
+        },
+        {
+          "name": "Generación de Enlaces de Cobro Tokenizados",
+          "icon": "CreditCard",
+          "description": "Creación de enlaces de pago únicos (/cobro/:id) protegidos y vinculados a correos proxy para cobros seguros y personalizados a clientes."
+        },
+        {
+          "name": "Integración con PayPal Server SDK",
+          "icon": "ShieldCheck",
+          "description": "Creación y captura segura de órdenes PayPal del lado del servidor, asegurando que el cobro respete estrictamente el monto fijado por el asesor."
+        },
+        {
+          "name": "Monitoreo en Tiempo Real (Polling Activo)",
+          "icon": "RefreshCw",
+          "description": "Monitoreo automático del estado de pago desde el panel del vendedor mientras el comprador paga en su dispositivo, confirmando la venta al instante."
+        },
+        {
+          "name": "Control de Expiración y Limpieza de Órdenes",
+          "icon": "Clock",
+          "description": "Manejo de tiempo de vida (TTL) para enlaces de cobro y barrido automático periódico en segundo plano para cancelar órdenes vencidas (HTTP 410)."
+        },
+        {
+          "name": "Panel e Historial de Órdenes",
+          "icon": "ClipboardList",
+          "description": "Visualización protegida del historial de órdenes completadas con desglose detallado de cliente, productos y total cobrado."
+        },
+        {
+          "name": "Autenticación de Asesores y Control de Acceso",
+          "icon": "Lock",
+          "description": "Protección de rutas de administración y catálogo mediante cookies seguras de sesión y autenticación Bearer para la API."
+        },
+        {
+          "name": "Generador de correos de manera automática",
+          "icon": "Mail",
+          "description": "Generación de correos de manera automática con el dominio de la empresa, para que el cliente pueda utilizarlo sin problemas."
+        }
+      ],
+      "challenges": [
+        {
+          "name": "Sincronización de Estado de Pago entre Dispositivos",
+          "description": "El asesor genera el enlace de cobro en su dispositivo mientras el cliente paga en su propio móvil o computadora, requiriendo confirmar la transacción sin necesidad de webhooks públicos en entornos locales o restringidos.",
+          "solution": "Se diseñó un mecanismo de polling inteligente y resiliente a microcortes de red en el cliente que consulta periódicamente el endpoint `/api/orders/:id`, detectando estados COMPLETED o EXPIRED en tiempo real."
+        },
+        {
+          "name": "Integridad y Seguridad del Monto a Cobrar",
+          "description": "Evitar que un cliente malicioso o un error en el frontend pueda alterar el importe final de la transacción durante el flujo de PayPal Checkout.",
+          "solution": "El backend almacena el monto validado en la creación del link tokenizado y la integración con PayPal Server SDK consulta directamente el registro interno, desacoplando el precio de cualquier payload del cliente en el frontend."
+        },
+        {
+          "name": "Gestión del Ciclo de Vida y Expiración de Enlaces",
+          "description": "Los enlaces de pago pendientes no debían permanecer utilizables indefinidamente para evitar cotizaciones desactualizadas o estados inconsistentes.",
+          "solution": "Se implementó una política de expiración por TTL combinada con un barrido en background cada 60s en el servidor y validaciones en tiempo de consulta que devuelven estado 410 Gone / EXPIRED."
+        },
+        {
+          "name": "Simplificar el Proceso de las Compras",
+          "description": "El cliente objetivo eran personas de la tercera edad, por lo que se debía simplificar el proceso de las compras para evitar perdidas de ventas en el Call Center Internacional.",
+          "solution": "Se opto por utilizar un generador de enlaces de pago tokenizados para que el cliente pueda realizar la compra de manera sencilla y sin pasos adicionales que podrían causar perdidas de ventas."
+        },
+        {
+          "name": "Los Clientes no Saben que es un Correo",
+          "description": "La mayoría de adultos mayores no saben que es un correo electronico y la pasarela de pago por PayPal exige que se ingrese un correo electronico para poder realizar la compra.",
+          "solution": "Se desarrollo un módulo para generar correos de manera automática con el dominio de la empresa, para que el cliente pueda utilizarlo sin problemas."
+        }
+      ]
+    },
+    "gallery": {
+      "images": [
+        "../src/assets/projects/solvierra/img/login.png",
+        "../src/assets/projects/solvierra/img/hero.png",
+        "../src/assets/projects/solvierra/img/categories.png",
+        "../src/assets/projects/solvierra/img/products.png",
+        "../src/assets/projects/solvierra/img/calculator.png",
+        "../src/assets/projects/solvierra/img/calculator_fill.png",
+        "../src/assets/projects/solvierra/img/faq.png",
+        "../src/assets/projects/solvierra/img/footer.png",
+        "../src/assets/projects/solvierra/img/history.png",
+        "../src/assets/projects/solvierra/img/generated_url.png",
+        "../src/assets/projects/solvierra/img/confirm_pay.png",
+        "../src/assets/projects/solvierra/img/sale_success.png",
+        "../src/assets/projects/solvierra/img/pay_completed.png",
+        "../src/assets/projects/solvierra/img/url_expired.png",
+        "../src/assets/projects/solvierra/img/popup_expired.png",
+        "../src/assets/projects/solvierra/img/error_pay.png",
+        "../src/assets/projects/solvierra/img/error_404.png"
+      ],
+      "videos": []
+    }
+  }  
 ]

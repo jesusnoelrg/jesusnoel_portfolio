@@ -3,6 +3,7 @@ import TextShimmer from '@components/effects/TextShimmer.astro';
 import Badge from '@components/ui/Badge.astro';
 import projects from '../../data/projects.json';
 import technologies from '../../data/technologies.json';
+import ProjectsList from '@components/ui/ProjectsList.tsx';
 import { resolveAsset } from '../../utils/resolveAsset';
 import { ArrowRight } from 'lucide-react';
 
@@ -26,38 +27,6 @@ const proyectos = projects.map(project => (
       class="text-md md:text-xl font-bold" 
     />
     <p class="text-3xl md:text-5xl font-bold text-zinc-800 dark:text-zinc-300 mb-10">Proyectos</p>
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-      {proyectos.map(proyecto => (
-        <div 
-          class="
-            relative group
-            p-6 
-            border border-zinc-300 dark:border-zinc-900 rounded-2xl
-           bg-(--bg-card) dark:bg-(--bg-card-dark)
-            hover:scale-105 transition-transform duration-300">
-          <a href={`/projects/${proyecto.slug}`} class="after:absolute after:inset-0"></a>
-          <div>
-            <img src={proyecto.image} alt={proyecto.title} class="w-full h-70 object-cover rounded-lg mb-4" />
-          </div>
-          <h3 class="text-xl lg:text-2xl font-bold mb-2 text-black dark:text-white">{proyecto.title}</h3>
-          <p class="text-sm lg:text-[16px] text-gray-800 dark:text-gray-300">{proyecto.description}</p>
-          <div class="flex flex-wrap gap-2 mt-4">
-            {proyecto.techStack.map(technology => (
-              <Badge url_img={technologies.find(t => t.name === technology)?.url_img} text={technology} />
-            ))}
-          </div>
-          <span
-            class="
-              flex items-center justify-start
-              px-3 py-1 mt-4 rounded-2xl
-              text-purple-800/70 dark:text-purple-400/70 group-hover:text-purple-700/70 dark:group-hover:text-purple-300/70 group-hover:underline
-              transition-colors duration-300">
-              Ver proyecto
-              <ArrowRight className="w-4 h-4" />
-            </span>
-        </div>
-      ))}
-    </div>
+    <ProjectsList client:load />
   </div>
 </section>
