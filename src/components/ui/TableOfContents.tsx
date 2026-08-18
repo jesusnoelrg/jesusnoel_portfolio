@@ -27,8 +27,8 @@ export default function TableOfContents({ sections = [] }: TableOfContentsProps)
 
     let options = {
       root: null as HTMLElement | null,
-      rootMargin: "0px",
-      threshold: [0.2, 1],
+      rootMargin: "-15% 0px -75% 0px",
+      threshold: 0,
     };
     
     observer.current = new IntersectionObserver(handleIntersect, options);
