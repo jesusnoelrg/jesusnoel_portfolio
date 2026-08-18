@@ -133,72 +133,6 @@
     }
   },
   {
-    "slug": "justicia",
-    "title": "JusticIA",
-    "category": ["IA", "MVP"],
-    "metadata": {
-      "created_at": "2025",
-      "client": "Ayuntamiento",
-      "roles": "Full Stack Developer, UI/UX Designer",
-      "summary": "Es un MVP de una plataforma enfocada hacía los profesionales de derecho para que puedan analizar documentos y obtener información relevante para sus casos."
-    },
-    "assets": {
-      "banner": "../src/assets/projects/justicia/banner.jpg",
-      "present": "../src/assets/projects/justicia/present.png"
-    },
-    "links": {
-      "repository": [],
-      "demo": ""
-    },
-    "tech_stack": [ "React", "Next.js", "TailwindCSS", "TypeScript", "Clerk" ],
-    "content": {
-      "description": "MVP de una plataforma de software orientada a profesionales del derecho para automatizar el análisis de documentos legales complejos (contratos, demandas, escritos). El sistema utiliza Inteligencia Artificial para extraer hallazgos clave, estructurar resúmenes ejecutivos y habilitar un entorno de interacción dinámica con los expedientes.",
-      "features": [
-        { 
-          "name": "Autenticación de usuarios", 
-          "icon": "User", 
-          "description": "Autenticación de usuarios con Clerk para que puedan acceder a la plataforma y guardar sus documentos." 
-        },
-        { 
-          "name": "Análisis de documentos", 
-            "icon": "FileText", 
-            "description": "Análisis de documentos con la ayuda de la Inteligencia Artificial para obtener hallazgos claves para sus casos." 
-        },
-        {
-          "name": "Panel deslizante", 
-          "icon": "PanelLeft", 
-          "description": "Panel deslizante para que puedan ver los documentos analizados y obtener información relevante para sus casos." 
-        }
-      ],
-      "challenges": [
-        { 
-          "name": "Persistencia de datos sin costos de servidor", 
-          "description": "Al tratarse de una validación rápida de mercado (MVP), se diseñó una arquitectura sin base de datos centralizada.", 
-          "solution": "Se implementó Local Storage para almacenar datos de forma local en el navegador, eliminando la necesidad de una infraestructura de servidor para persistencia." 
-        },
-        {
-          "name": "Complejidad en el análisis de documentos", 
-          "description": "La Inteligencia Artificial no arrojaba una respuesta y no se obtenía información relevante para el caso.", 
-          "solution": "Se le dio mas tiempo para que la IA pueda analizar el documento y obtener la información correcta." 
-        },
-        {
-          "name": "Diseño de interfaz compleja", 
-          "description": "Al tener una alta densidad de información (vista de archivos, chat interactivo y panel de hallazgos simultáneos), hallazgos claves y el chat, no se sabía como navegar entre ellas.", 
-          "solution": "Se implemento un sistema de navegación entre las secciones para que el usuario pueda navegar entre ellas de manera sencilla y clara. Además de tener un panel deslizante para que el usuario pueda ajustar el tamaño de las secciones." 
-        }
-      ]
-    },
-    "gallery": {
-      "images": [
-        "../src/assets/projects/justicia/img/dashboard.png",
-        "../src/assets/projects/justicia/img/vista_caso_1.png",
-        "../src/assets/projects/justicia/img/crear_caso.png",
-        "../src/assets/projects/justicia/img/eliminar_caso.png"
-      ],
-      "videos": []
-    }
-  },
-  {
     "slug": "electro-inventario",
     "title": "Electro Inventario",
     "category": ["Backend"],
@@ -288,120 +222,6 @@
         "../src/assets/projects/electro_inventario/img/usuarios.png",
         "../src/assets/projects/electro_inventario/img/categorias.png",
         "../src/assets/projects/electro_inventario/img/empleados.png"
-      ],
-      "videos": []
-    }
-  },
-  {
-    "slug": "chilicache",
-    "title": "ChiliCache",
-    "category": ["Frontend", "Backend"],
-    "metadata": {
-      "created_at": "2026",
-      "client": "Proyecto Escolar - Open Source",
-      "roles": "Full Stack Developer",
-      "summary": "Sistema de inventario enfocado en manejo de salsas para la gestión de clientes, productos, ventas y movimientos de inventario. Incluye un panel de control para la gestión de usuarios y para modificar la configuración de la empresa."
-    },
-    "assets": {
-      "banner": "../src/assets/projects/chilicache/banner.png",
-      "present": "../src/assets/projects/chilicache/present.png"
-    },
-    "links": {
-      "repository": [
-        {
-          "platform": "GitHub",
-          "link": "https://github.com/jesusnoelrg/ChiliCache"
-        }
-      ],
-      "demo": ""
-    },
-    "tech_stack": [ "Express.js", "Node.js", "TypeScript", "JavaScript", "Bootstrap", "Docker", "SQLite", "Redis" ],
-    "content": {
-      "description": "Sistema de inventario para salsas que fue un proyecto escolar dónde se realizo un MVP para una empresa que se dedica a la venta de salsas. Este proyecto esta enfocado para uso local y volumen de ventas pequeño. Principalmente fue desarrollado con los requisitos establecidos de la empresa y quise actualizarlo para que sea más robusto, funcional y de código abierto.",
-      "features": [
-        { 
-          "name": "Autenticación de usuarios", 
-          "icon": "ShieldCheck", 
-          "description": "Autenticación de usuarios con encriptación de contraseñas (bcrypt). Cookies para que puedan acceder a la plataforma y persistir la sesión." 
-        },
-        {
-          "name": "Gestión de clientes", 
-          "icon": "Users", 
-          "description": "Gestión de clientes para poder agregar, editar y eliminar clientes." 
-        },
-        {
-          "name": "Gestión de productos", 
-          "icon": "Search", 
-          "description": "Gestión de productos para poder agregar, editar y eliminar productos." 
-        },
-        {
-          "name": "Gestión de ventas", 
-          "icon": "FileText", 
-          "description": "Gestión de ventas para poder agregar, editar y eliminar ventas. Además de contar con un generador de reportes para poder generar reportes de ventas." 
-        },
-        {
-          "name": "Historial de movimientos", 
-          "icon": "History", 
-          "description": "Historial de movimientos para que puedan ser consultados y se pueda tener contexto de los movimientos hechos en la plataforma y así evitar duplicados o errores en el inventario." 
-        }, 
-        {
-          "name": "Gestión de usuarios", 
-          "icon": "User", 
-          "description": "Gestión de usuarios para poder agregar, editar y eliminar usuarios." 
-        },
-        {
-          "name": "Configuración de la empresa", 
-          "icon": "Settings", 
-          "description": "Panel interactivo para modificar la configuración de la empresa como nombre, rfc, dirección, teléfono, email, colores y logo." 
-        }
-      ],
-      "challenges": [
-        { 
-          "name": "Refactorización de Arquitectura", 
-          "description": "El sistema original (2024) carecía de tipado estático, aislamiento de entorno y mecanismos de optimización de I/O, complicando su escalabilidad y mantenimiento.", 
-          "solution": "Se migró la base del código a TypeScript para garantizar type-safety, se modularizó el patrón MVC y se integró Docker para orquestar los servicios dependientes." 
-        },
-        {
-          "name": "Integración Redis con Docker", 
-          "description": "Me fue un gran problema intentar integrar Redis en mi maquina local con SO Windows 11.", 
-          "solution": "Utilizar una imagen de Docker para poder llevar Redis a dónde sea sin importar el SO." 
-        },
-        {
-          "name": "Subir archivos de imagen", 
-          "description": "Cómo es un sistema local y pequeño, pensé que no sería eficiente subir imagenes en formato BLOB en la base de datos.", 
-          "solution": "Implemente la libreria multer para poder subir archivos de imagen a la carpeta /uploads y así manejar las imagenes de manera eficiente sin acumular varias imagenes en una carpeta." 
-        },
-        {
-          "name": "Vista inconsistente en el panel de control", 
-          "description": "El sistema permite modificar colores, logo y nombre de la empresa. Pero al momento de cambiar de página se veía por milisegundos el color, fondo y nombre de la empresa que venía por defecto, eso daba una mala experiencia de usuario.", 
-          "solution": "Implemente un middleware que obtiene la configuración de la empresa que consulta primero a Redis y si no existe, consulta a la base de datos y la guarda via res.locals para que se pueda acceder a la configuración de la empresa en todas las rutas sin tener que consultar la base de datos en cada ruta. Evitando así la latencia en el renderizado SSR (EJS) en cada request." 
-        }
-      ]
-    },
-    "gallery": {
-      "images": [
-        "../src/assets/projects/chilicache/img/login.png",
-        "../src/assets/projects/chilicache/img/dashboard.png",
-        "../src/assets/projects/chilicache/img/clients.png",
-        "../src/assets/projects/chilicache/img/clients_2.png",
-        "../src/assets/projects/chilicache/img/clients_3.png",
-        "../src/assets/projects/chilicache/img/products.png",
-        "../src/assets/projects/chilicache/img/products_2.png",
-        "../src/assets/projects/chilicache/img/products_3.png",
-        "../src/assets/projects/chilicache/img/products_4.png",
-        "../src/assets/projects/chilicache/img/sales.png",
-        "../src/assets/projects/chilicache/img/sales_2.png",
-        "../src/assets/projects/chilicache/img/sales_3.png",
-        "../src/assets/projects/chilicache/img/sales_4.png",
-        "../src/assets/projects/chilicache/img/sales_5.png",
-        "../src/assets/projects/chilicache/img/sales_6.png",
-        "../src/assets/projects/chilicache/img/reporte.png",
-        "../src/assets/projects/chilicache/img/movements.png",
-        "../src/assets/projects/chilicache/img/movements_2.png",
-        "../src/assets/projects/chilicache/img/users.png",
-        "../src/assets/projects/chilicache/img/users_2.png",
-        "../src/assets/projects/chilicache/img/myaccount.png",
-        "../src/assets/projects/chilicache/img/company.png"
       ],
       "videos": []
     }
@@ -526,5 +346,185 @@
       ],
       "videos": []
     }
-  }  
+  },
+  {
+    "slug": "chilicache",
+    "title": "ChiliCache",
+    "category": ["Frontend", "Backend"],
+    "metadata": {
+      "created_at": "2026",
+      "client": "Proyecto Escolar - Open Source",
+      "roles": "Full Stack Developer",
+      "summary": "Sistema de inventario enfocado en manejo de salsas para la gestión de clientes, productos, ventas y movimientos de inventario. Incluye un panel de control para la gestión de usuarios y para modificar la configuración de la empresa."
+    },
+    "assets": {
+      "banner": "../src/assets/projects/chilicache/banner.png",
+      "present": "../src/assets/projects/chilicache/present.png"
+    },
+    "links": {
+      "repository": [
+        {
+          "platform": "GitHub",
+          "link": "https://github.com/jesusnoelrg/ChiliCache"
+        }
+      ],
+      "demo": ""
+    },
+    "tech_stack": [ "Express.js", "Node.js", "TypeScript", "JavaScript", "Bootstrap", "Docker", "SQLite", "Redis" ],
+    "content": {
+      "description": "Sistema de inventario para salsas que fue un proyecto escolar dónde se realizo un MVP para una empresa que se dedica a la venta de salsas. Este proyecto esta enfocado para uso local y volumen de ventas pequeño. Principalmente fue desarrollado con los requisitos establecidos de la empresa y quise actualizarlo para que sea más robusto, funcional y de código abierto.",
+      "features": [
+        { 
+          "name": "Autenticación de usuarios", 
+          "icon": "ShieldCheck", 
+          "description": "Autenticación de usuarios con encriptación de contraseñas (bcrypt). Cookies para que puedan acceder a la plataforma y persistir la sesión." 
+        },
+        {
+          "name": "Gestión de clientes", 
+          "icon": "Users", 
+          "description": "Gestión de clientes para poder agregar, editar y eliminar clientes." 
+        },
+        {
+          "name": "Gestión de productos", 
+          "icon": "Search", 
+          "description": "Gestión de productos para poder agregar, editar y eliminar productos." 
+        },
+        {
+          "name": "Gestión de ventas", 
+          "icon": "FileText", 
+          "description": "Gestión de ventas para poder agregar, editar y eliminar ventas. Además de contar con un generador de reportes para poder generar reportes de ventas." 
+        },
+        {
+          "name": "Historial de movimientos", 
+          "icon": "History", 
+          "description": "Historial de movimientos para que puedan ser consultados y se pueda tener contexto de los movimientos hechos en la plataforma y así evitar duplicados o errores en el inventario." 
+        }, 
+        {
+          "name": "Gestión de usuarios", 
+          "icon": "User", 
+          "description": "Gestión de usuarios para poder agregar, editar y eliminar usuarios." 
+        },
+        {
+          "name": "Configuración de la empresa", 
+          "icon": "Settings", 
+          "description": "Panel interactivo para modificar la configuración de la empresa como nombre, rfc, dirección, teléfono, email, colores y logo." 
+        }
+      ],
+      "challenges": [
+        { 
+          "name": "Refactorización de Arquitectura", 
+          "description": "El sistema original (2024) carecía de tipado estático, aislamiento de entorno y mecanismos de optimización de I/O, complicando su escalabilidad y mantenimiento.", 
+          "solution": "Se migró la base del código a TypeScript para garantizar type-safety, se modularizó el patrón MVC y se integró Docker para orquestar los servicios dependientes." 
+        },
+        {
+          "name": "Integración Redis con Docker", 
+          "description": "Me fue un gran problema intentar integrar Redis en mi maquina local con SO Windows 11.", 
+          "solution": "Utilizar una imagen de Docker para poder llevar Redis a dónde sea sin importar el SO." 
+        },
+        {
+          "name": "Subir archivos de imagen", 
+          "description": "Cómo es un sistema local y pequeño, pensé que no sería eficiente subir imagenes en formato BLOB en la base de datos.", 
+          "solution": "Implemente la libreria multer para poder subir archivos de imagen a la carpeta /uploads y así manejar las imagenes de manera eficiente sin acumular varias imagenes en una carpeta." 
+        },
+        {
+          "name": "Vista inconsistente en el panel de control", 
+          "description": "El sistema permite modificar colores, logo y nombre de la empresa. Pero al momento de cambiar de página se veía por milisegundos el color, fondo y nombre de la empresa que venía por defecto, eso daba una mala experiencia de usuario.", 
+          "solution": "Implemente un middleware que obtiene la configuración de la empresa que consulta primero a Redis y si no existe, consulta a la base de datos y la guarda via res.locals para que se pueda acceder a la configuración de la empresa en todas las rutas sin tener que consultar la base de datos en cada ruta. Evitando así la latencia en el renderizado SSR (EJS) en cada request." 
+        }
+      ]
+    },
+    "gallery": {
+      "images": [
+        "../src/assets/projects/chilicache/img/login.png",
+        "../src/assets/projects/chilicache/img/dashboard.png",
+        "../src/assets/projects/chilicache/img/clients.png",
+        "../src/assets/projects/chilicache/img/clients_2.png",
+        "../src/assets/projects/chilicache/img/clients_3.png",
+        "../src/assets/projects/chilicache/img/products.png",
+        "../src/assets/projects/chilicache/img/products_2.png",
+        "../src/assets/projects/chilicache/img/products_3.png",
+        "../src/assets/projects/chilicache/img/products_4.png",
+        "../src/assets/projects/chilicache/img/sales.png",
+        "../src/assets/projects/chilicache/img/sales_2.png",
+        "../src/assets/projects/chilicache/img/sales_3.png",
+        "../src/assets/projects/chilicache/img/sales_4.png",
+        "../src/assets/projects/chilicache/img/sales_5.png",
+        "../src/assets/projects/chilicache/img/sales_6.png",
+        "../src/assets/projects/chilicache/img/reporte.png",
+        "../src/assets/projects/chilicache/img/movements.png",
+        "../src/assets/projects/chilicache/img/movements_2.png",
+        "../src/assets/projects/chilicache/img/users.png",
+        "../src/assets/projects/chilicache/img/users_2.png",
+        "../src/assets/projects/chilicache/img/myaccount.png",
+        "../src/assets/projects/chilicache/img/company.png"
+      ],
+      "videos": []
+    }
+  },
+  {
+    "slug": "justicia",
+    "title": "JusticIA",
+    "category": ["IA", "MVP"],
+    "metadata": {
+      "created_at": "2025",
+      "client": "Ayuntamiento",
+      "roles": "Full Stack Developer, UI/UX Designer",
+      "summary": "Es un MVP de una plataforma enfocada hacía los profesionales de derecho para que puedan analizar documentos y obtener información relevante para sus casos."
+    },
+    "assets": {
+      "banner": "../src/assets/projects/justicia/banner.jpg",
+      "present": "../src/assets/projects/justicia/present.png"
+    },
+    "links": {
+      "repository": [],
+      "demo": ""
+    },
+    "tech_stack": [ "React", "Next.js", "TailwindCSS", "TypeScript", "Clerk" ],
+    "content": {
+      "description": "MVP de una plataforma de software orientada a profesionales del derecho para automatizar el análisis de documentos legales complejos (contratos, demandas, escritos). El sistema utiliza Inteligencia Artificial para extraer hallazgos clave, estructurar resúmenes ejecutivos y habilitar un entorno de interacción dinámica con los expedientes.",
+      "features": [
+        { 
+          "name": "Autenticación de usuarios", 
+          "icon": "User", 
+          "description": "Autenticación de usuarios con Clerk para que puedan acceder a la plataforma y guardar sus documentos." 
+        },
+        { 
+          "name": "Análisis de documentos", 
+            "icon": "FileText", 
+            "description": "Análisis de documentos con la ayuda de la Inteligencia Artificial para obtener hallazgos claves para sus casos." 
+        },
+        {
+          "name": "Panel deslizante", 
+          "icon": "PanelLeft", 
+          "description": "Panel deslizante para que puedan ver los documentos analizados y obtener información relevante para sus casos." 
+        }
+      ],
+      "challenges": [
+        { 
+          "name": "Persistencia de datos sin costos de servidor", 
+          "description": "Al tratarse de una validación rápida de mercado (MVP), se diseñó una arquitectura sin base de datos centralizada.", 
+          "solution": "Se implementó Local Storage para almacenar datos de forma local en el navegador, eliminando la necesidad de una infraestructura de servidor para persistencia." 
+        },
+        {
+          "name": "Complejidad en el análisis de documentos", 
+          "description": "La Inteligencia Artificial no arrojaba una respuesta y no se obtenía información relevante para el caso.", 
+          "solution": "Se le dio mas tiempo para que la IA pueda analizar el documento y obtener la información correcta." 
+        },
+        {
+          "name": "Diseño de interfaz compleja", 
+          "description": "Al tener una alta densidad de información (vista de archivos, chat interactivo y panel de hallazgos simultáneos), hallazgos claves y el chat, no se sabía como navegar entre ellas.", 
+          "solution": "Se implemento un sistema de navegación entre las secciones para que el usuario pueda navegar entre ellas de manera sencilla y clara. Además de tener un panel deslizante para que el usuario pueda ajustar el tamaño de las secciones." 
+        }
+      ]
+    },
+    "gallery": {
+      "images": [
+        "../src/assets/projects/justicia/img/dashboard.png",
+        "../src/assets/projects/justicia/img/vista_caso_1.png",
+        "../src/assets/projects/justicia/img/crear_caso.png",
+        "../src/assets/projects/justicia/img/eliminar_caso.png"
+      ],
+      "videos": []
+    }
+  }
 ]
