@@ -39,6 +39,9 @@ const sections = [
           <p class="font-bold text-[15px] sm:text-base lg:text-sm xl:text-base" >Resumen: </p>
           <p class="text-[13px] sm:text-base lg:text-[12px] xl:text-sm dark:text-gray-300 text-gray-700">{project?.metadata?.summary ?? "N/A"}</p>
         </div>
+        <p class="font-bold text-[13px] sm:text-base lg:text-[12px] xl:text-base" >Categorias: 
+          <span class="font-normal text-[13px] sm:text-base lg:text-[12px] xl:text-sm dark:text-gray-300 text-gray-700">{project?.category.join(", ") ?? "N/A"}</span>
+        </p>
         <p class="font-bold text-[13px] sm:text-base lg:text-[12px] xl:text-base" >Creado en: 
           <span class="font-normal text-[13px] sm:text-base lg:text-[12px] xl:text-sm dark:text-gray-300 text-gray-700">{project?.metadata?.created_at ?? "N/A"}</span>
         </p>
