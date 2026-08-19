@@ -76,7 +76,7 @@ export default function ProjectsControls () {
             border border-zinc-300 dark:border-zinc-900 rounded-2xl
           bg-(--bg-card) dark:bg-(--bg-card-dark)
             hover:scale-105 transition-transform duration-300">
-          <a href={`/projects/${proyecto.slug}`} className="after:absolute after:inset-0"></a>
+          <a href={`/projects/${proyecto.slug}`} aria-label={`Enlace al proyecto ${proyecto.title}`} target="_self" rel="noopener noreferrer" className="after:absolute after:inset-0"></a>
           <div className='relative'>
             <div className='absolute flex items-center gap-2 top-2 left-2'>
               {proyecto.category.map(c => (
@@ -86,7 +86,7 @@ export default function ProjectsControls () {
               ))}
             </div>
             
-            <img src={proyecto.image} alt={proyecto.title} className="w-full h-70 object-cover rounded-lg mb-4" />
+            <img src={proyecto.image} aria-label={`Imagen del proyecto ${proyecto.title}`} role="img" alt={proyecto.title} className="w-full h-70 object-cover rounded-lg mb-4" />
           </div>
           <h1 className="text-xl lg:text-2xl font-bold mb-2 text-black dark:text-white">
             {proyecto.title}
@@ -102,7 +102,7 @@ export default function ProjectsControls () {
                 border border-zinc-300 dark:border-zinc-900 rounded-2xl
                 text-sm 
                 text-black dark:text-white bg-zinc-50 dark:bg-zinc-900 " >
-                <img src={resolveAsset(Technologies.find(t => t.name === technology)?.url_img)} alt={technology} className="w-4 h-4 me-1" />
+                <img src={resolveAsset(Technologies.find(t => t.name === technology)?.url_img)} aria-label={`Icono de ${technology}`} role="img" alt={technology} className="w-4 h-4 me-1" />
                 {technology}
               </div>
             ))}
