@@ -1,0 +1,75 @@
+---
+import TextShimmer from '@components/effects/TextShimmer.astro';
+import DataCamp from '@assets/plataforms/datacamp.svg';
+import certifications from '../../data/certifications.json';
+import plataforms from '../../data/plataforms.json';
+import { resolveAsset } from '../../utils/resolveAsset';
+import { ArrowRight } from 'lucide-react';
+
+interface Certification {
+  title: string;
+  plataform: string;
+  description: string;
+  expedition_date?: string;
+  expiration_date?: string;
+  url: string;
+  image?: string;
+  is_course?: boolean;
+}
+
+const listCertifications: Certification[] = certifications.map(c =>( 
+  {
+    title: c.title,
+    description: c.description,
+    plataform: c.plataform,
+    expedition_date: c.expedition_date,
+    expiration_date: c.expiration_date,
+    url: c.url,
+    image: resolveAsset(plataforms.find(p => p.name === c.plataform)?.url_img),
+    is_course: c.is_course,
+  }
+));
+---
+
+<section id="certifications" class="py-20">
+  <div class="container mx-auto px-4">
+    <div class="text-center">
+      <TextShimmer text="CREDENCIALES" color1="#391d43" color2="#7d6187" color3="#391d43"
+        class="text-xl md:text-2xl font-bold" 
+      />
+      <h1 class="mb-5 text-3xl md:text-5xl font-bold text-black dark:text-white">Certificaciones y cursos</h1>
+    </div>
+    <div class="w-full mt-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {
+          listCertifications.map(c => (
+          <article class="relative flex gap-4 border border-zinc-300 dark:border-zinc-800  bg-zinc-100/40 dark:bg-zinc-900/40 p-6 rounded-lg shadow-md group hover:scale-102 transition-all duration-300">
+            <img src={c.image} aria-label={`Icono de ${c.plataform}`} role="img" alt={c.title} class="w-15 h-15" />
+            <div class="flex flex-col items-between justify-between">
+              <div class="text-black dark:text-white">
+                <h3 class="text-xl font-bold">{c.title}</h3>
+                <h4 class="text-gray-700 dark:text-gray-300">{c.plataform}</h4>
+                <p class="text-gray-600 dark:text-gray-400 text-sm">{c.expedition_date ? `Expedición: ${c.expedition_date}` : '' } {c.expiration_date ? `Vencimiento: ${c.expiration_date}` : '' }</p>
+                <p class="text-gray-800 dark:text-gray-200 mt-4">{c.description.length > 100 ? c.description.slice(0, 100) + '..' : c.description}</p>
+                
+              </div>
+              <a 
+                class="
+                  after:content-[''] after:absolute after:top-0 after:left-0 after:w-full after:h-full
+                  flex items-center mt-5
+                  text-md font-medium
+                  text-purple-800 dark:text-purple-400 
+                  group-hover:underline group-hover:text-purple-500 dark:group-hover:text-purple-300"
+                href={c.url} target="_blank"
+              >
+                Ver {c.is_course ? 'curso' : 'certificación'} <ArrowRight className="w-4 h-4 ms-1" />
+              </a>
+            </div>
+          </article>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+  
+</section>

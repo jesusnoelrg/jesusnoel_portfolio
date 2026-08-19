@@ -1,0 +1,39 @@
+[
+  {
+    "title": "SQL Associate",
+    "plataform": "DataCamp",
+    "description": "Certificación de SQL de nivel asociado obtenida en DataCamp.",
+    "expedition_date": "2026",
+    "expiration_date": "2028",
+    "url": "https://www.datacamp.com/certificate/SQA0016646699456",
+    "is_course": false
+  },
+  {
+    "title": "Contenedores y virtualización con Docker y Kubernetes",
+    "plataform": "DataCamp",
+    "description": "Curso de contenedores y virtualización con Docker y Kubernetes obtenido en DataCamp.",
+    "url": "https://www.datacamp.com/completed/statement-of-accomplishment/track/70ab118d3678f9348b3f1a57b67e55a2a792ff9a",
+    "is_course": true
+  },
+  {
+    "title": "Construir APIs con FastAPI y Python",
+    "plataform": "DataCamp",
+    "description": "Curso de construir APIs con FastAPI y Python obtenido en DataCamp.",
+    "url": "https://www.datacamp.com/completed/statement-of-accomplishment/track/3963aaed1d6c5c8a2bfb8c8191d45346cf9d25da",
+    "is_course": true
+  },
+  {
+    "title": "Implementación de IA en producción con FastAPI",
+    "plataform": "DataCamp",
+    "description": "Curso de implementación de IA en producción con FastAPI obtenido en DataCamp.",
+    "url": "https://www.datacamp.com/completed/statement-of-accomplishment/course/47d33b75d0237eb524aae50604da5ab27a97f7a2",
+    "is_course": true
+  },
+  {
+    "title": "Fundamentos de GitHub",
+    "plataform": "DataCamp",
+    "description": "Curso para la preparación del examen de certificación de GitHub Foundations.",
+    "url": "https://www.datacamp.com/completed/statement-of-accomplishment/track/39244dc398966e5a8abf2da38570285717d767f2",
+    "is_course": true
+  }
+]
