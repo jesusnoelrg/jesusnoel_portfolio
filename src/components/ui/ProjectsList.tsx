@@ -88,9 +88,9 @@ export default function ProjectsControls () {
             
             <img src={proyecto.image} alt={proyecto.title} className="w-full h-70 object-cover rounded-lg mb-4" />
           </div>
-          <h3 className="text-xl lg:text-2xl font-bold mb-2 text-black dark:text-white">
+          <h1 className="text-xl lg:text-2xl font-bold mb-2 text-black dark:text-white">
             {proyecto.title}
-          </h3>
+          </h1>
           <p className="text-sm lg:text-[16px] text-gray-800 dark:text-gray-300">
             {proyecto.description.slice(0, 100)}...
           </p>
@@ -111,7 +111,7 @@ export default function ProjectsControls () {
             className="
               flex items-center justify-start
               px-3 py-1 mt-4 rounded-2xl
-              text-purple-800/70 dark:text-purple-400/70 group-hover:text-purple-700/70 dark:group-hover:text-purple-300/70 group-hover:underline
+              text-purple-800 dark:text-purple-400 group-hover:text-purple-700 dark:group-hover:text-purple-300 group-hover:underline
               transition-colors duration-300">
               Ver proyecto
               <ArrowRight className="w-4 h-4" />
