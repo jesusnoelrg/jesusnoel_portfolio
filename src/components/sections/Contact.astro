@@ -38,7 +38,7 @@ const networks = [
       <div class="flex justify-center lg:justify-start items-center mt-10 gap-5">
         {
           networks.map(({plataform, icon: Icon, ref, invert}) => (
-            <a href={ref} target="_blank" 
+            <a href={ref} aria-label={`Enlace a ${plataform}`} target="_blank" 
               class="
               flex flex-col items-center justify-center
               space-y-2 px-4 py-2
@@ -47,7 +47,7 @@ const networks = [
               cursor-pointer
               transition duration-300
               ">
-              <Icon class={`w-8 h-8 ${invert ? 'invert dark:invert-0' : ''}`} />
+              <Icon aria-label={`Icono de ${plataform}`} role="img" class={`w-8 h-8 ${invert ? 'invert dark:invert-0' : ''}`} />
               <span class="text-sm text-black dark:text-white" >{plataform}</span>
             </a>
           ))

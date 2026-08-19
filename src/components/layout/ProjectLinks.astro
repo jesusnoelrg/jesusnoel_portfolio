@@ -44,8 +44,8 @@ const repositories = repositoryList.map(({platform, link}: Repository) => {
 
 <div class="sticky top-90 right-0 w-full flex items-center justify-center gap-4 p-2">
   {repositories.map(({platform, icon: Icon, link}: {platform: string, icon: any, link: string}, index: number) => (
-    <a href={link} target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center gap-2 hover:scale-110 transition-all duration-300">
-      <Icon class="w-8 h-8 text-black dark:text-white" />
+    <a href={link} aria-label={`Enlace a ${platform}`} target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center gap-2 hover:scale-110 transition-all duration-300">
+      <Icon aria-label={`Icono de ${platform}`} role="img" class="w-8 h-8 text-black dark:text-white" />
       <span class="text-sm text-black dark:text-white">{platform}</span>
     </a>
   ))}

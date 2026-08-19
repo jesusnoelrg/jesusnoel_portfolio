@@ -93,7 +93,7 @@ const orm = {
             {
               frontend.items.map(item => (
                 <div class="flex flex-col items-center gap-5">
-                  <img src={resolveAsset(item.url_img)} alt={item.text} class={`w-8 h-8 md:w-12 md:h-12 lg:w-8 lg:h-8 ${item.invert ? 'invert dark:invert-0' : ''}`} />
+                  <img src={resolveAsset(item.url_img)} aria-label={`Icono de ${item.text}`} role="img" alt={item.text} class={`w-8 h-8 md:w-12 md:h-12 lg:w-8 lg:h-8 ${item.invert ? 'invert dark:invert-0' : ''}`} />
                   <span class="text-sm text-zinc-700 dark:text-zinc-300">{item.text}</span>
                 </div> 
               ))
@@ -123,7 +123,7 @@ const orm = {
             {
               databases.items.map(item => (
                 <div class="flex flex-col items-center gap-5">
-                  <img src={resolveAsset(item.url_img)} alt={item.text} class={`w-8 h-8 ${item.invert ? 'invert dark:invert-0' : ''}`} />
+                  <img src={resolveAsset(item.url_img)} aria-label={`Icono de ${item.text}`} role="img" alt={item.text} class={`w-8 h-8 ${item.invert ? 'invert dark:invert-0' : ''}`} />
                   <span class="text-sm text-zinc-700 dark:text-zinc-300">{item.text}</span>
                 </div> 
               ))
@@ -154,7 +154,7 @@ const orm = {
             {
               backend.items.map(item => (
                 <div class="flex flex-col items-center gap-5">
-                  <img src={resolveAsset(item.url_img)} alt={item.text} class={`w-8 h-8 ${item.invert ? 'invert dark:invert-0' : ''}`} />
+                  <img src={resolveAsset(item.url_img)} aria-label={`Icono de ${item.text}`} role="img" alt={item.text} class={`w-8 h-8 ${item.invert ? 'invert dark:invert-0' : ''}`} />
                   <span class="text-sm text-zinc-700 dark:text-zinc-300">{item.text}</span>
                 </div> 
               ))
@@ -184,7 +184,7 @@ const orm = {
           {
             orm.items.map(item => (
               <div class="flex flex-col items-center gap-5">
-                <img src={resolveAsset(item.url_img)} alt={item.text} class={`w-8 h-8`} />
+                <img src={resolveAsset(item.url_img)} aria-label={`Icono de ${item.text}`} role="img" alt={item.text} class={`w-8 h-8`} />
                 <span class="text-sm text-zinc-700 dark:text-zinc-300">{item.text}</span>
               </div> 
             ))
@@ -213,7 +213,7 @@ const orm = {
           {
             tools.items.map(item => (
               <div class="flex flex-col items-center gap-5 text-white">
-                <img src={resolveAsset(item.url_img)} alt={item.text} class={`w-8 h-8 ${item.invert ? 'invert dark:invert-0' : ''}`} />
+                <img src={resolveAsset(item.url_img)} aria-label={`Icono de ${item.text}`} role="img" alt={item.text} class={`w-8 h-8 ${item.invert ? 'invert dark:invert-0' : ''}`} />
                 <span class="text-sm text-zinc-700 dark:text-zinc-300">{item.text}</span>
               </div> 
             ))
