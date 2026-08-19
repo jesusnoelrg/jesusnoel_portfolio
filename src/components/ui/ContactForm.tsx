@@ -21,7 +21,6 @@ interface FieldForm {
 
 export default function ContactForm() {
   const [openModal, setOpenModal] = useState(false);
-  const [result, setResult] = useState("");
   const [errors, setErrors] = useState<FieldErrors>({});
   const [form, setForm] = useState<FieldForm>({});
 
@@ -80,9 +79,14 @@ export default function ContactForm() {
     });
 
     const data = await response.json();
-    if(data.success) setOpenModal(true);
+    if(data.success) {
+      setOpenModal(true);
+    }else{
+      setErrors({
+        email: "Ha ocurrido un error al enviar el mensaje, por favor intente nuevamente.",
+      });
+    }
     setForm(cleanForm);
-    setResult(data.success ? "Success!" : "Error");
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement> ) => {
