@@ -60,7 +60,7 @@ const listCertifications: Certification[] = certifications.map(c =>(
                   text-md font-medium
                   text-purple-800 dark:text-purple-400 
                   group-hover:underline group-hover:text-purple-500 dark:group-hover:text-purple-300"
-                href={c.url} target="_blank"
+                href={c.url} target="_blank" aria-label={`Ver ${c.is_course ? 'curso' : 'certificación'} ${c.title}`}
               >
                 Ver {c.is_course ? 'curso' : 'certificación'} <ArrowRight className="w-4 h-4 ms-1" />
               </a>
