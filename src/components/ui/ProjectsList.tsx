@@ -68,13 +68,14 @@ export default function ProjectsControls () {
     </div>
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
       {filterProjectsByCategory(category).map((proyecto: Project) => (
-        <div 
+        <article 
           key={proyecto.slug}
           className="
             relative group
+            flex flex-col
             p-6 
             border border-zinc-300 dark:border-zinc-900 rounded-2xl
-          bg-(--bg-card) dark:bg-(--bg-card-dark)
+            bg-(--bg-card) dark:bg-(--bg-card-dark)
             hover:scale-105 transition-transform duration-300">
           <a href={`/projects/${proyecto.slug}`} aria-label={`Enlace al proyecto ${proyecto.title}`} target="_self" rel="noopener noreferrer" className="after:absolute after:inset-0"></a>
           <div className='relative'>
@@ -88,35 +89,39 @@ export default function ProjectsControls () {
             
             <img src={proyecto.image} aria-label={`Imagen del proyecto ${proyecto.title}`} role="img" alt={proyecto.title} className="w-full h-70 object-cover rounded-lg mb-4" />
           </div>
-          <h1 className="text-xl lg:text-2xl font-bold mb-2 text-black dark:text-white">
-            {proyecto.title}
-          </h1>
-          <p className="text-sm lg:text-[16px] text-gray-800 dark:text-gray-300">
-            {proyecto.description.slice(0, 100)}...
-          </p>
-          <div className="flex flex-wrap gap-2 mt-4">
-            {proyecto.techStack.map(technology => (
-              <div key={technology} className="
-                flex items-center justify-center 
-                px-3 py-1
-                border border-zinc-300 dark:border-zinc-900 rounded-2xl
-                text-sm 
-                text-black dark:text-white bg-zinc-50 dark:bg-zinc-900 " >
-                <img src={resolveAsset(Technologies.find(t => t.name === technology)?.url_img)} aria-label={`Icono de ${technology}`} role="img" alt={technology} className="w-4 h-4 me-1" />
-                {technology}
+          <div className="flex flex-col justify-between h-full" >
+            <div className='flex flex-col'>
+              <h1 className="text-xl lg:text-2xl font-bold mb-2 text-black dark:text-white">
+                {proyecto.title}
+              </h1>
+              <p className="text-sm lg:text-[16px] text-gray-800 dark:text-gray-300">
+                {proyecto.description.slice(0, 100)}...
+              </p>
+              <div className="flex flex-wrap gap-2 mt-4">
+                {proyecto.techStack.map(technology => (
+                  <div key={technology} className="
+                    flex items-center justify-center 
+                    px-3 py-1
+                    border border-zinc-300 dark:border-zinc-900 rounded-2xl
+                    text-sm 
+                    text-black dark:text-white bg-zinc-50 dark:bg-zinc-900 " >
+                    <img src={resolveAsset(Technologies.find(t => t.name === technology)?.url_img)} aria-label={`Icono de ${technology}`} role="img" alt={technology} className="w-4 h-4 me-1" />
+                    {technology}
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+            <span
+              className="
+                flex items-center justify-start
+                px-3 py-1 mt-4 rounded-2xl
+                text-purple-800 dark:text-purple-400 group-hover:text-purple-700 dark:group-hover:text-purple-300 group-hover:underline
+                transition-colors duration-300">
+                Ver proyecto
+                <ArrowRight className="w-4 h-4" />
+              </span>
           </div>
-          <span
-            className="
-              flex items-center justify-start
-              px-3 py-1 mt-4 rounded-2xl
-              text-purple-800 dark:text-purple-400 group-hover:text-purple-700 dark:group-hover:text-purple-300 group-hover:underline
-              transition-colors duration-300">
-              Ver proyecto
-              <ArrowRight className="w-4 h-4" />
-            </span>
-        </div>
+        </article>
       ))}
     </div>
   </>
